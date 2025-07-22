@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+ul, li {
+  list-style: none;
+}
+
+.no-scrollbar-arrows {
+    scrollbar-width: thin; 
+    scrollbar-color: white transparent;
+}
+
+.no-scrollbar-arrows::-webkit-scrollbar {
+    width: 4px;
+}
+
+.no-scrollbar-arrows::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.no-scrollbar-arrows::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 9999px;
+}
+
+.no-scrollbar-arrows::-webkit-scrollbar-button {
+    display: none;
+}
