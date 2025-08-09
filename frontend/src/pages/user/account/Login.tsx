@@ -7,12 +7,12 @@ export default function Login() {
             <div className="flex flex-col items-center">
                 <div className="w-full pb-5">
                     <Input 
-                        type={'text'}
-                        placeHolder={'Username'}
+                        type={'number'}
+                        placeholder="Username"
                     />
                     <Input 
                         type={'password'}
-                        placeHolder={'Password'}
+                        placeholder="Password"
                     />
                     <div className="gap-3 items-center flex pt-3">
                         <input type="checkbox"

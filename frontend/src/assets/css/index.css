@@ -15,23 +15,10 @@ ul, li {
 }
 
 .no-scrollbar-arrows {
-    scrollbar-width: thin; 
-    scrollbar-color: white transparent;
+    scrollbar-width: thin !important; /* Firefox */
+    scrollbar-color: transparent transparent !important; /* Firefox */
 }
-
-.no-scrollbar-arrows::-webkit-scrollbar {
-    width: 4px;
-}
-
-.no-scrollbar-arrows::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.no-scrollbar-arrows::-webkit-scrollbar-thumb {
-    background: white;
-    border-radius: 9999px;
-}
-
-.no-scrollbar-arrows::-webkit-scrollbar-button {
-    display: none;
+.scrollbar-arrows {
+    scrollbar-width: thin !important; /* Firefox */
+    scrollbar-color: #4A90D4 transparent !important; /* Firefox */
 }

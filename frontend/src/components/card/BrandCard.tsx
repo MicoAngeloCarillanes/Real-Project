@@ -4,24 +4,25 @@ interface BrandCardProps {
     small?: boolean;
 }
 
-export default function BrandCard({
-    small = false
-}: BrandCardProps) {
-
+export default function BrandCard({ small = false }: BrandCardProps) {
     return (
         <>
             <div className="flex gap-1 items-center justify-center text-white">
-                <img 
+                <img
                     src={logo}
                     height={180}
                     width={180}
-                    className={`${small ? 'h-[6.25rem] w-[6.25rem]' : 'h-[11.25rem] w-[11.25rem]'}`}
+                    className={`${small ? 'h-[80px] w-[80px]' : 'h-[140px] w-[140px]'}`}
                 />
-                <div className={`${small ? 'w-[9.5rem]' : 'w-[17.25rem]'}`}>
-                    <span className={`break-words font-extrabold ${small ? 'leading-5 text-[1.75em]' : 'leading-10 text-[3em]'}`}>
+                <div className="w-full">
+                    <span
+                        className={`font-[800] leading-[100%] ${small ? 'text-[20px]' : 'text-[3em]'} w-full`}
+                    >
                         Arellano University
                     </span>
-                    <p className={`font-extralight ${small ? 'text-[0.75em]' : 'text-[1em]'}`}>
+                    <p
+                        className={`font-extralight ${small ? 'text-[12px]' : 'text-[16px]'}`}
+                    >
                         Jose Abad Santos College
                     </p>
                 </div>
