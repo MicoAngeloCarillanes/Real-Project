@@ -13,12 +13,3 @@
 ul, li {
   list-style: none;
 }
-
-.no-scrollbar-arrows {
-    scrollbar-width: thin !important; /* Firefox */
-    scrollbar-color: transparent transparent !important; /* Firefox */
-}
-.scrollbar-arrows {
-    scrollbar-width: thin !important; /* Firefox */
-    scrollbar-color: #4A90D4 transparent !important; /* Firefox */
-}

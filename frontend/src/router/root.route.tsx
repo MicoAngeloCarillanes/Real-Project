@@ -1,6 +1,6 @@
 import Root from '@pages/Root';
 import { RouteObject } from 'react-router-dom';
-import RouteAccount from '@router/user/account/account.route';
+// import RouteAccount from '@router/user/account/account.route';
 import RouteMainLayout from '@router/user/main.route';
 
 export default function RouteRoot(): RouteObject[] {
@@ -9,7 +9,7 @@ export default function RouteRoot(): RouteObject[] {
             path: '/',
             element: <Root />,
             children: [
-                ...RouteAccount(),
+                // ...RouteAccount(),
                 ...RouteMainLayout()
             ]
         }

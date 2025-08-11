@@ -1,28 +1,45 @@
-import logo from '@assets/images/au-logo.png';
+import logo from '@assets/images/au-logo.svg';
 
 interface BrandCardProps {
-    small?: boolean;
+    // Used to determine brand card styling
+    isSmall?: boolean;
 }
 
-export default function BrandCard({ small = false }: BrandCardProps) {
+/**
+ * Brandcard component that displays the university name, branch and logo.
+ * 
+ * @example
+ * function MainSidebar() {
+ *   return (
+ *      <BrandCard isSmall />
+ *   );
+ * }
+ * 
+ */
+export default function BrandCard({ 
+    isSmall
+}: BrandCardProps) {
+
     return (
         <>
-            <div className="flex gap-1 items-center justify-center text-white">
+            <div className="flex gap-[4px] items-center justify-center text-[#FFFFFF]">
                 <img
+                    className={`${isSmall ? 'h-[60px] w-[60px]' : 'h-[140px] w-[140px]'}`}
+                    height={140}
                     src={logo}
-                    height={180}
-                    width={180}
-                    className={`${small ? 'h-[80px] w-[80px]' : 'h-[140px] w-[140px]'}`}
+                    width={140}
                 />
-                <div className="w-full">
-                    <span
-                        className={`font-[800] leading-[100%] ${small ? 'text-[20px]' : 'text-[3em]'} w-full`}
-                    >
+                <div>
+                    <p className={`
+                        font-[800] leading-[100%] w-full 
+                            ${isSmall ? 'text-[16px]' : 'text-[20px]'}
+                    `}>
                         Arellano University
-                    </span>
-                    <p
-                        className={`font-extralight ${small ? 'text-[12px]' : 'text-[16px]'}`}
-                    >
+                    </p>
+                    <p className={`
+                        font-[400]
+                            ${isSmall ? 'text-[10px]' : 'text-[16px]'}
+                    `}>
                         Jose Abad Santos College
                     </p>
                 </div>

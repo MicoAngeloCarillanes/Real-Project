@@ -1,18 +1,26 @@
 interface AuthenticationButtonProps {
+    // Label of the button
     label: string;
 }
 
+/**
+ * Authentication button component used for actions such as login or password recovery.
+ *
+ * @example
+ * function Login() {
+ *   return (
+ *      <AuthenticationButton label="Login" />
+ *   );
+ * }
+ * 
+ */
 export default function AuthenticationButton({
     label
 }: AuthenticationButtonProps) {
 
     return (
-        <>
-            <button 
-                className="bg-black p-3 min-w-[19.5rem] rounded-lg text-white"
-            >
-                {label}
-            </button>
-        </>
+        <button className="bg-[#000000] min-w-[312px] p-[12px] rounded-[8px] text-[#FFFFFF]">
+            {label}
+        </button>
     );
 }
