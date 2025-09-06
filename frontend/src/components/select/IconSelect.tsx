@@ -2,13 +2,17 @@ import TooltipCard from '@components/card/TooltipCard';
 import { useState, useRef, useEffect } from 'react';
 
 interface IconSelectProps {
-    children: React.ReactNode;
+    height?: number;
+    imageUrl?: string;
     selectOptions: string[];
+    width?: number;
 }
 
 export default function IconSelect({ 
-    children,
-    selectOptions 
+    height,
+    imageUrl,
+    selectOptions,
+    width
 }: IconSelectProps) {
     const [toggleSelect, setToggleSelect] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -39,12 +43,16 @@ export default function IconSelect({
     };
 
     return (
-        <span 
-            className="relative inline-block hover:cursor-pointer"
+        <i 
+            className="hover:cursor-pointer relative"
             ref={iconRef}
         >
             <span onClick={() => setToggleSelect((prev) => !prev)}>
-                {children}
+                <img
+                    height={height}
+                    width={width}
+                    src={imageUrl}
+                />
             </span>
             {toggleSelect && (
                 <TooltipCard 
@@ -53,6 +61,6 @@ export default function IconSelect({
                     selectedOption={selectedOption}
                 />
             )}
-        </span>
+        </i>
     );
 }

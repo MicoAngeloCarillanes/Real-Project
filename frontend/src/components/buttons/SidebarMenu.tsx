@@ -45,7 +45,10 @@ export default function SidebarMenu({
         <ul className="flex flex-col gap-[4px]">
             {tabOptions.map((tab) => (
                 <li 
-                    className={`${activeTab === tab ? '!bg-[#D4D9EA]' : ''} bg-[#F6F4FB] cursor-pointer hover:bg-[#c7c9df] overflow-hidden px-[20px] py-[12px] relative rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]`}
+                    className={`
+                        bg-[#F6F4FB] cursor-pointer hover:bg-[#c7c9df] overflow-hidden px-[20px] py-[12px] relative rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]
+                        ${activeTab === tab ? '!bg-[#D4D9EA]' : ''} 
+                    `}
                     key={tab}
                     onClick={() => handleSelectedTab(tab)}
                 >

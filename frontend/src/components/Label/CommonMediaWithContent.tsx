@@ -1,14 +1,14 @@
+type size = 'SMALL' | 'MEDIUM' | 'LARGE';
+
 interface CommonMediaWithContentProps {
     // Children to be rendered besides image
     children?: React.ReactNode;
-    // Spacing between image and children
-    gap?: number;
-    // Image height
-    height?: number;
     // Image to be rendered
-    imageUrl?: string; 
-    // Image width
-    width?: number;
+    imageUrl?: string;
+    // Checks whether display is vertical or horizontal
+    isVertical?: boolean;
+    // Spacing between image and children
+    size?: size;
 }
 
 /**
@@ -28,21 +28,42 @@ interface CommonMediaWithContentProps {
  */
 export default function CommonMediaWithContent({
     children,
-    gap,
-    height,
     imageUrl,
-    width
+    isVertical,
+    size
 }: CommonMediaWithContentProps) {
-    // Custom variables
-    const containerStyle = `flex gap-[${gap}px] items-center text-[#FFFFFF]`;
+    // Style variables
+    const styleMap = {
+        'SMALL': {
+            gap: 6,
+            height: '16',
+            width: '14'
+        },
+        'MEDIUM': {
+            gap: 6,
+            height: '25',
+            width: '25'
+        },
+        'LARGE': {
+            gap: 6,
+            height: '90',
+            width: '90'
+        }
+    };
+    const style = size && styleMap[size];
 
     return (
-        <div className={containerStyle}>
+        <div 
+            className={`
+                ${isVertical ? 'flex flex-col items-center' : 'flex items-center'}
+            `}
+            style={style}
+        >
             <img 
                 alt=""
-                height={height}
+                height={style?.height}
                 src={imageUrl}
-                width={width}
+                width={style?.width}
             />
             {children}
         </div>

@@ -52,16 +52,27 @@ export default function SearchContact() {
     return (
         <>
             <div
-                className={`${isSearching ? 'bg-white pl-4 pr-2 rounded-full' : ''} flex h-[28px] items-center justify-between pr-[8px] relative text-white`}
+                className={`
+                    flex h-[28px] items-center justify-between pr-[8px] relative text-white 
+                    ${isSearching ? 'bg-white pl-4 pr-2 rounded-full' : ''}
+                `}
                 ref={containerRef}
                 tabIndex={-1}
                 onBlur={handleSearchBlur}
             >
-                <label className={`${isSearching ? 'hidden' : ''} font-bold text-[14px]`}>
+                <label 
+                    className={`
+                        font-bold text-[14px] 
+                        ${isSearching ? 'hidden' : ''}
+                    `}
+                >
                     Contacts
                 </label>
                 <input
-                    className={`${isSearching ? '' : 'hidden'} outline-none text-[12px] text-black w-full`}
+                    className={`
+                        outline-none text-[12px] text-black w-full
+                        ${isSearching ? '' : 'hidden'} 
+                    `}
                     placeholder="Enter contact name"
                     ref={inputRef}
                     type="text"
@@ -78,16 +89,16 @@ export default function SearchContact() {
                     />
                 </span>
             </div>
-            <div className="[scrollbar-color:#FFFFFF_transparent] [scrollbar-width:thin] border-b border-t border-white overflow-y-auto p-[4px] text-wrap">
+            <div className="[scrollbar-color:#FFFFFF_transparent] [scrollbar-width:thin] border-b border-t border-white overflow-y-auto p-[4px] pr-[10px] text-wrap">
                 {items.map((item) => (
                     <div key={item.id} className="cursor-pointer hover:bg-[#ffffff4D]">
                         <CommonMediaWithContent
-                            gap={6}
                             imageUrl={item.logo}
-                            height={25}
-                            width={25}
+                            size="MEDIUM"
                         >
-                            <span className="font-[400] overflow-hidden text-[12px] text-nowrap">Julius Robert Tolentino{item.label}</span>
+                            <span className="font-[400] overflow-hidden text-[12px] text-nowrap">
+                                Julius Robert Tolentino{item.label}
+                            </span>
                         </CommonMediaWithContent>
                     </div>
                 ))}

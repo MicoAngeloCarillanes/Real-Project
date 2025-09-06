@@ -19,7 +19,7 @@ export default function AuthenticationButton({
 }: AuthenticationButtonProps) {
 
     return (
-        <button className="bg-[#000000] min-w-[312px] p-[12px] rounded-[8px] text-[#FFFFFF]">
+        <button className="bg-[#000000] hover:opacity-[0.8] min-w-[312px] p-[12px] rounded-[8px] text-[#FFFFFF]">
             {label}
         </button>
     );

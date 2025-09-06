@@ -1,19 +1,19 @@
 import AuthenticationButton from '@components/buttons/AuthenticationButton';
 import Input from '@components/input/Input';
 
-export default function ForgotPassword() {
+export default function StudentForgotPassword() {
 
     return (
         <>
             <div className="flex flex-col items-center">
-                <div className="w-full pb-5">
+                <div className="pb-[20px] w-full">
                     <Input 
-                        type={'text'}
-                        placeHolder={'Enter Username or Email'}
+                        placeholder="Enter Username or Email"
+                        type="text"
                     />
                 </div>
-                <div className="w-full flex flex-col items-center">
-                    <AuthenticationButton label={'Search'}/>
+                <div className="flex flex-col items-center w-full">
+                    <AuthenticationButton label="Search"/>
                 </div>
             </div>
         </>        

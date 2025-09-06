@@ -1,10 +1,10 @@
-import SidebarMenu from '@components/buttons/SidebarMenu';
-import BrandCard from '@components/card/BrandCard';
-import CommonMediaWithContent from '@components/Label/CommonMediaWithContent';
 import lockIcon from '@assets/icons/lock-icon.svg';
 import logoutIcon from '@assets/icons/logout-icon.svg';
 import supportIcon from '@assets/icons/support-icon.svg';
+import SidebarMenu from '@components/buttons/SidebarMenu';
+import BrandCard from '@components/card/BrandCard';
 import SearchContact from '@components/input/SearchContact';
+import CommonMediaWithContent from '@components/Label/CommonMediaWithContent';
 
 export default function MainSidebar() {
     // Custom variables
@@ -15,9 +15,7 @@ export default function MainSidebar() {
     ];
 
     return (
-        <aside
-            className="bg-[#0C60A1] bottom-[0px] fixed flex flex-col gap-[16px] left-0 overflow-y-auto px-[30px] py-[20px] text-[#FFFFFF] top-[0px] w-[250px]"
-        >
+        <div className="bg-[#0C60A1] bottom-[0px] fixed flex flex-col gap-[16px] left-0 overflow-y-auto px-[30px] py-[20px] text-[#FFFFFF] top-[0px] w-[250px]">
             <div className="flex-1">
                 <BrandCard isSmall />
             </div>
@@ -32,16 +30,16 @@ export default function MainSidebar() {
                         key={key}
                     >
                         <CommonMediaWithContent
-                            gap={6}
-                            height={16}
                             imageUrl={button.icon}
-                            width={14}
+                            size="SMALL"
                         >
-                            <span className="font-[400] text-[12px] text-nowrap">{button.label}</span>
+                            <span className="font-[400] text-[12px] text-nowrap">
+                                {button.label}
+                            </span>
                         </CommonMediaWithContent>
                     </div>
                 ))}
             </div>
-        </aside>
+        </div>
     );
 }
