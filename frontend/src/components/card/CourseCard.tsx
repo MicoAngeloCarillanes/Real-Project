@@ -22,15 +22,15 @@ export default function CourseCard({
         <ShadowCard white>
             <div 
                 className={`
-                    cursor-pointer relative
-                    ${isGrid ? 'h-[250px] w-[200px]' : 'flex gap-[16px] w-full px-[16px] py-[8px]'}
+                    cursor-pointer relative w-full
+                    ${isGrid ? 'h-[250px]' : 'flex gap-[16px] w-full px-[16px] py-[8px]'}
                 `}
             >
                 <div
-                    className={isGrid ? 'h-[150px] w-full rounded-t-[8px]' : 'h-[36px] w-[36px]'}
+                    className={isGrid ? 'h-[160px] w-full rounded-t-[8px]' : 'h-[36px] w-[36px]'}
                     style={courseBackgroundColor}
                 ></div>
-                <div className="flex-1">
+                <div className="flex-1 p-[8px]">
                     <DetailCard 
                         isCourse
                         {...props}

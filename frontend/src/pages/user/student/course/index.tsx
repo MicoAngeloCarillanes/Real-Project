@@ -4,9 +4,10 @@ import CourseCard from '@components/card/CourseCard';
 import ShadowCard from '@components/card/ShadowCard';
 import CommonHeader from '@components/container/CommonHeader';
 import MainDiv from '@components/container/MainDiv';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function StudentCourse() {
+    const [isGrid, setIsGrid] = useState(true);
     const iconMap = [
         {
             iconUrl: lockIcon
@@ -47,7 +48,6 @@ export default function StudentCourse() {
             pendingActCount: '4'
         }
     ];
-    const isGrid = true;
     
     return (
         <MainDiv>
@@ -57,10 +57,14 @@ export default function StudentCourse() {
                 icons={iconMap}         
             />
             <ShadowCard isLarge>
-                <div className={`m-[20px] ${isGrid ? 'flex gap-x-[20px] gap-y-[40px] flex-wrap' : 'w-full flex flex-col gap-[12px]'}`}>
+                <div 
+                    className={`
+                        m-[20px] 
+                        ${isGrid ? 'grid gap-[20px] grid-cols-[repeat(auto-fit,minmax(200px,1fr))] grid-rows-[250px] w-full' : 'w-full flex flex-col gap-[12px]'}
+                    `}
+                >
                     {courseList.map((course, key) => (
-                        <div
-                            className="flex-1"
+                        <React.Fragment
                             key={key}
                         >
                             <CourseCard 
@@ -70,7 +74,7 @@ export default function StudentCourse() {
                                 pendingActCount={course.pendingActCount}
                                 isGrid={isGrid}
                             />
-                        </div>
+                        </React.Fragment>
                     ))}
                 </div>
             </ShadowCard>
