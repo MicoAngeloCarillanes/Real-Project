@@ -1,8 +1,8 @@
 import arrowDropdownIcon from '@assets/icons/arrow-drop-down-icon.svg';
 import logo from '@assets/images/au-logo.svg';
 import ShadowCard from '@components/card/ShadowCard';
-import TimelineCard from '@components/card/TimelineCard';
-import CommonDatepicker from '@components/Datepicker/CommonDatepicker';
+import DetailCard from '@components/card/DetailCard';
+import CommonDatepicker from '@components/datepicker/CommonDatepicker';
 import CommonMediaWithContent from '@components/Label/CommonMediaWithContent';
 import IconSelect from '@components/select/IconSelect';
 import { useEffect, useRef, useState } from 'react';
@@ -70,12 +70,12 @@ export default function SubSidebar() {
                     >
                         {Array.from({ length: 10 })
                             .map((_, index) => (
-                                <TimelineCard
+                                <DetailCard
                                     dueDate="Due Nov. 29, 11:59 PM"
                                     isOverflowing={isOverflowing}
                                     key={index}
-                                    subjectCodeName="ITC - 129 LEC"
-                                    taskName="Learning Task No. 4 Jose Rizal the Movie"
+                                    cardDescription="ITC - 129 LEC"
+                                    cardName="Learning Task No. 4 Jose Rizal the Movie"
                                 />
                             ))}
                     </div>

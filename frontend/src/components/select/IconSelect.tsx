@@ -4,15 +4,19 @@ import { useState, useRef, useEffect } from 'react';
 interface IconSelectProps {
     height?: number;
     imageUrl?: string;
-    selectOptions: string[];
+    selectOptions?: string[];
     width?: number;
+    isHeader?: boolean;
+    onIconClick?: VoidFunction;
 }
 
 export default function IconSelect({ 
     height,
     imageUrl,
     selectOptions,
-    width
+    width,
+    isHeader,
+    onIconClick
 }: IconSelectProps) {
     const [toggleSelect, setToggleSelect] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -20,7 +24,6 @@ export default function IconSelect({
 
     // Handle click outside
     useEffect(() => {
-        console.log('toggleSelect changed:', toggleSelect);
         const handleClickOutside = (event: MouseEvent) => {
             if (iconRef.current && !iconRef.current.contains(event.target as Node)) {
                 setToggleSelect(false);
@@ -42,19 +45,27 @@ export default function IconSelect({
         console.log('test');
     };
 
+    function handleToggle() {
+        setToggleSelect((prev) => !prev);
+    }
+
     return (
         <i 
-            className="hover:cursor-pointer relative"
-            ref={iconRef}
+            className={`
+                hover:cursor-pointer relative
+                ${isHeader ? 'h-[20px] w-[20px] bg-[#0C60A1] flex items-center justify-center rounded-full' : ''}
+            `}
+            ref={selectOptions ? iconRef : undefined}
+            onClick={onIconClick && onIconClick}
         >
-            <span onClick={() => setToggleSelect((prev) => !prev)}>
+            <span onClick={selectOptions ? handleToggle : undefined}>
                 <img
                     height={height}
                     width={width}
                     src={imageUrl}
                 />
             </span>
-            {toggleSelect && (
+            {toggleSelect && selectOptions && (
                 <TooltipCard 
                     options={selectOptions} 
                     onSelect={handleSelectOption}

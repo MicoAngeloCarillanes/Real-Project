@@ -1,15 +1,8 @@
-// import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
-// import ShadowCard from '@components/card/ShadowCard';
-// import TimelineCard from '@components/card/TimelineCard';
-// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-// import { DateCalendar, LocalizationProvider } from '@mui/x-date-pickers';
+
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-// import { useState } from 'react';
-// import IconSelect from '@components/select/IconSelect';
 import MainSidebar from '@components/MainSidebar';
 import SubSidebar from '@components/SubSidebar';
 import { useEffect } from 'react';
-// import logo from '@assets/images/au-logo.svg';
 
 export default function StudentMainLayout() {
     // Hooks
@@ -42,7 +35,7 @@ export default function StudentMainLayout() {
                     <div className="flex-none w-[275px]">
                         <MainSidebar />
                     </div>
-                    <main className="flex-1">
+                    <main className="flex-1 mt-[25px]">
                         <Outlet />
                     </main>
                     <div className="flex-none w-[268px]">
