@@ -32,13 +32,14 @@ export default function StudentMainLayout() {
                 <Outlet />
             ) : mainContentCondition ? (
                 <div className="flex min-h-screen py-[25px] w-full">
+                    <div className="bg-[#FFFFFF] fixed h-[25px] left-[0px] right-[0px] top-[0px]"></div>
                     <div className="flex-none w-[275px]">
                         <MainSidebar />
                     </div>
                     <main className="flex-1 mt-[25px]">
                         <Outlet />
                     </main>
-                    <div className="flex-none w-[268px]">
+                    <div className="flex-none w-[293px]">
                         <SubSidebar />
                     </div>
                 </div>

@@ -11,8 +11,6 @@ export interface DetailCardProps {
     dueDate?: string;
     // 
     isCourse?: boolean;
-    // Checks whether the parent container's content is overflowing
-    isOverflowing?: boolean;
 }
 
 export default function DetailCard({
@@ -20,15 +18,15 @@ export default function DetailCard({
     cardName,
     cardStatus,
     dueDate,
-    isCourse,
-    isOverflowing
+    isCourse
 }: DetailCardProps) {
     const [hovered, setHovered] = useState(false);
 
     return (
         <div 
             className={`
-                    ${isCourse ? 'bg-transparent' : 'hover:opacity-[0.8] cursor-pointer px-[6px] py-[2px] rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] w-full'}
+                    flex flex-col gap-y-[4px]
+                    ${isCourse ? 'bg-transparent' : 'hover:opacity-[0.8] cursor-pointer px-[6px] py-[4px] rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] w-full'}
                     ${cardStatus === 'missed' ? 'bg-[#ffc5c8]' : cardStatus === 'submitted' ? 'bg-[#D4D9EA]' :  'bg-[#B6E7FE]'}
                 `}
             onMouseEnter={() => setHovered(true)}
@@ -36,20 +34,17 @@ export default function DetailCard({
         >
             <div 
                 className={`
-                    font-[500] text-[12px] w-full
+                    font-[500] text-[12px] w-full 
                     ${isCourse ? 'break-words' : 'truncate'}
                 `}
             >
                 {cardName}
             </div>
             <div 
-                className={`
-                        flex justify-between text-[10px]
-                        ${isOverflowing ? 'flex-col' : ''}
-                    `}
+                className="flex justify-between text-[10px]"
             >
-                <span>{cardDescription}</span>
-                <span>{dueDate}</span>
+                <span className="leading-[100%]">{cardDescription}</span>
+                <span className="leading-[100%]">{dueDate}</span>
             </div>
             {!isCourse && hovered && (
                 <div 

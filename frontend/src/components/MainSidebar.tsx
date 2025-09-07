@@ -33,7 +33,7 @@ export default function MainSidebar() {
                             imageUrl={button.icon}
                             size="SMALL"
                         >
-                            <span className="font-[400] text-[12px] text-nowrap">
+                            <span className="font-[400] leading-[100%] text-[12px] text-nowrap">
                                 {button.label}
                             </span>
                         </CommonMediaWithContent>

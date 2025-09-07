@@ -33,13 +33,13 @@ export default function BrandCard({
                 />
                 <div>
                     <p className={`
-                        font-[800] leading-[100%] w-full 
+                        font-[800] leading-[100%] w-full mb-[2px] 
                         ${isSmall ? 'text-[16px]' : 'text-[20px]'}
                     `}>
                         Arellano University
                     </p>
                     <p className={`
-                        font-[400]
+                        font-[400] leading-[100%]
                         ${isSmall ? 'text-[10px]' : 'text-[16px]'}
                     `}>
                         Jose Abad Santos College

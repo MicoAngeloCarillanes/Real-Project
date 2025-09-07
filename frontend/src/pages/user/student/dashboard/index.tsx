@@ -1,5 +1,5 @@
-import lockIcon from '@assets/icons/lock-icon.svg';
-import supportIcon from '@assets/icons/support-icon.svg';
+import notifBellIcon from '@assets/icons/notification-bell-icon.svg';
+import settingsIcon from '@assets/icons/settings-icon.svg';
 import newsImage from '@assets/images/newsImage.png';
 import ShadowCard from '@components/card/ShadowCard';
 import CommonHeader from '@components/container/CommonHeader';
@@ -8,10 +8,10 @@ import MainDiv from '@components/container/MainDiv';
 export default function StudentDashboard() {
     const iconMap = [
         {
-            iconUrl: lockIcon
+            imageUrl: notifBellIcon
         },
         {
-            iconUrl: supportIcon
+            imageUrl: settingsIcon
         }
     ];
 
@@ -22,7 +22,10 @@ export default function StudentDashboard() {
                 subTitle="News/Announcement Page"
                 icons={iconMap}
             /> 
-            <ShadowCard>
+            <ShadowCard 
+                isCentered
+                isLarge
+            >
                 <div className="px-[20px]">
                     <img 
                         src={newsImage}

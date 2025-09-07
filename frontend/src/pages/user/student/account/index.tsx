@@ -24,7 +24,7 @@ export default function StudentAccount() {
                                 imageUrl={lockIcon}
                                 size="SMALL"
                             >
-                                <span className="font-[400] text-[12px] text-nowrap">
+                                <span className="font-[400] leading-[100%] text-[12px] text-nowrap">
                                     Data Privacy
                                 </span>
                             </CommonMediaWithContent>

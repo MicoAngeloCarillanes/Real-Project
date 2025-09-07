@@ -96,7 +96,7 @@ export default function SearchContact() {
                             imageUrl={item.logo}
                             size="MEDIUM"
                         >
-                            <span className="font-[400] overflow-hidden text-[12px] text-nowrap">
+                            <span className="font-[400] leading-[100%] overflow-hidden text-[12px] text-nowrap">
                                 Julius Robert Tolentino{item.label}
                             </span>
                         </CommonMediaWithContent>

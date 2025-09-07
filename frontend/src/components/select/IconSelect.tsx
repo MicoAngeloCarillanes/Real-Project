@@ -1,12 +1,13 @@
 import TooltipCard from '@components/card/TooltipCard';
 import { useState, useRef, useEffect } from 'react';
 
-interface IconSelectProps {
+export interface IconSelectProps {
     height?: number;
     imageUrl?: string;
     selectOptions?: string[];
     width?: number;
     isHeader?: boolean;
+    pendingActCount?: string;
     onIconClick?: VoidFunction;
 }
 
@@ -16,6 +17,7 @@ export default function IconSelect({
     selectOptions,
     width,
     isHeader,
+    pendingActCount,
     onIconClick
 }: IconSelectProps) {
     const [toggleSelect, setToggleSelect] = useState(false);
@@ -42,12 +44,13 @@ export default function IconSelect({
     const handleSelectOption = (option: string) => {
         setSelectedOption(option);
         setToggleSelect((false));
-        console.log('test');
     };
 
     function handleToggle() {
         setToggleSelect((prev) => !prev);
     }
+    
+    const testStyle = { height: height };
 
     return (
         <i 
@@ -59,10 +62,12 @@ export default function IconSelect({
             onClick={onIconClick && onIconClick}
         >
             <span onClick={selectOptions ? handleToggle : undefined}>
+                
                 <img
                     height={height}
                     width={width}
                     src={imageUrl}
+                    style={ testStyle }
                 />
             </span>
             {toggleSelect && selectOptions && (
@@ -71,6 +76,11 @@ export default function IconSelect({
                     onSelect={handleSelectOption}
                     selectedOption={selectedOption}
                 />
+            )}
+            {pendingActCount && (
+                <span className="absolute bg-[#BF0A12] flex font-[600] h-[12px] items-center justify-center right-[-4px] rounded-full text-[#FFFFFF] text-[8px] top-[-4px] w-[12px]">
+                    {pendingActCount}
+                </span>
             )}
         </i>
     );

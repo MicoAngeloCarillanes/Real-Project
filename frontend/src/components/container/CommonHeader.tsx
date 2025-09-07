@@ -1,14 +1,10 @@
-import IconSelect from '@components/select/IconSelect';
+import IconSelect, { IconSelectProps } from '@components/select/IconSelect';
 import React from 'react';
-
-interface Icon {
-    iconUrl: string;
-}
 
 interface CommonHeaderProps {
     title?: string;
     subTitle?: string;
-    icons?: Icon[];
+    icons?: Omit<IconSelectProps, 'selectOptions' | 'isHeader'>[];
 }
 
 export default function CommonHeader({
@@ -18,20 +14,23 @@ export default function CommonHeader({
 }: CommonHeaderProps) {
     return (
         <div>
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[4px]">
-                    <h1 className="text-[#0C60A1] text-[20px] font-[700] leading-[100%]">{title}</h1>
-                    <span className="text-[12px] leading-[100%]">{subTitle}</span>
+                    <h1 className="font-[700] leading-[100%] text-[#0C60A1] text-[20px]">{title}</h1>
+                    <span className="leading-[100%] text-[12px]">
+                        {subTitle}
+                    </span>
                 </div>
-                <div className="flex gap-[16px]">
+                <div className="flex gap-[8px]">
                     {icons?.map((icon, key) => (
                         <React.Fragment key={key}>
                             <IconSelect 
+                                height={icon.height || 11}
+                                imageUrl={icon.imageUrl}
                                 isHeader
-                                height={10}
-                                width={10}
-                                imageUrl={icon.iconUrl}
-                                onIconClick={() => console.log('clicked')}
+                                pendingActCount={icon.pendingActCount}
+                                width={icon.width || 11}
+                                onIconClick={icon.onIconClick ? icon.onIconClick : undefined}
                             />
                         </React.Fragment>
                     ))}
