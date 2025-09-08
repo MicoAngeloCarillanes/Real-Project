@@ -3,11 +3,11 @@ import DetailCard, { DetailCardProps } from '@components/card/DetailCard';
 import { useNavigate } from 'react-router-dom';
 
 interface CourseListProps extends DetailCardProps {
-    // 
+    // Checks whether course list is grid or list
     isGrid?: boolean;
 }
 
-export default function CourseList({ 
+export default function CourseList({
     isGrid,
     ...props
 }: CourseListProps) {
@@ -51,9 +51,9 @@ export default function CourseList({
     }
 
     return (
-        <div 
+        <div
             className={`
-                m-[16px] 
+                p-[16px]
                 ${isGrid ? 'grid gap-[20px] grid-cols-[repeat(auto-fit,minmax(200px,1fr))] grid-rows-[250px] w-full' : 'w-full flex flex-col gap-[12px]'}
             `}
         >
@@ -63,7 +63,7 @@ export default function CourseList({
                     onClick={() => course.onCourseClick?.(course.cardDescription)}
                 >
                     <ShadowCard white>
-                        <div 
+                        <div
                             className={`
                                 cursor-pointer relative w-full
                                 ${isGrid ? 'h-[250px]' : 'flex gap-[16px] w-full px-[16px] py-[8px]'}
@@ -74,10 +74,11 @@ export default function CourseList({
                                 style={{ backgroundColor: course.courseColor }}
                             ></div>
                             <div className={isGrid ? 'p-[8px]' : 'flex-1'}>
-                                <DetailCard 
+                                <DetailCard
                                     cardDescription={course.cardDescription}
                                     cardName={course.cardName}
                                     isCourse
+                                    isTransparent
                                     {...props}
                                 />
                             </div>

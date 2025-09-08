@@ -14,7 +14,7 @@ export default function StudentCourse() {
     const coursePath = '/student/course/';
     const isCourseRoot = location.pathname === coursePath;
     const isCoursePath = location.pathname.startsWith(coursePath);
-    const [isGrid, setIsGrid] = useState(true);
+    const [isGrid, setIsGrid] = useState(false);
     const iconMap = [
         {
             imageUrl: notifBellIcon,
@@ -34,7 +34,7 @@ export default function StudentCourse() {
     function handleToggleDisplay() {
         setIsGrid(!isGrid);
     }
-    
+
     return (
         <>
             {(!isCourseRoot && isCoursePath) ? (
@@ -44,10 +44,10 @@ export default function StudentCourse() {
                     <CommonHeader
                         title="Courses"
                         subTitle="Course List"
-                        icons={iconMap}         
+                        icons={iconMap}
                     />
                     <ShadowCard isLarge>
-                        <CourseList isGrid />
+                        <CourseList isGrid={isGrid} />
                     </ShadowCard>
                 </MainDiv>
             )}
