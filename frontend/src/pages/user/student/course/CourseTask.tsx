@@ -5,6 +5,7 @@ import ShadowCard from '@components/card/ShadowCard';
 import React from 'react';
 import DetailCard from '@components/card/DetailCard';
 import CommonButton, { CommonButtonProps } from '@components/buttons/CommonButton';
+import CommonTextArea from '@components/input/CommonTextArea';
 
 interface FileMapProps {
     fileName: string;
@@ -30,6 +31,10 @@ export default function CourseTask() {
         {
             fileName: 'data.xlsx',
             fileDescription: 'Excel Spreadsheet'
+        },
+        {
+            fileName: 'data2.xlsx',
+            fileDescription: 'Excel Spreadsheet'
         }
     ];
     const buttonMap:CommonButtonProps[] = [
@@ -52,7 +57,7 @@ export default function CourseTask() {
                 title="Computer Organization"
             />
             <ShadowCard isLarge>
-                <div className="flex gap-[16px] p-[16px] w-full">
+                <div className="flex flex-col gap-[16px] p-[16px] w-full">
                     <ShadowCard white>
                         <div className="flex flex-1 flex-col gap-[6px] p-[12px]">
                             <h3 className="font-[600] leading-[100%] text-[#080612] text-[14px]">Learning Task No. 4 Jose Rizal the Movie</h3>
@@ -87,46 +92,55 @@ export default function CourseTask() {
                             </div>
                         </div>
                     </ShadowCard>
-                    <div className="w-[350px]">
-                        <ShadowCard white>
-                            <div className="flex flex-col gap-[12px] p-[12px] w-full">
-                                <div className="flex justify-between w-full">
-                                    <h3 className="font-[600] text-[#080612] text-[12px]">Status:</h3>
-                                    <h4 className="font-[400] text-[#080612] text-[12px]">Pending</h4>
-                                </div>
-                                <div className="flex flex-col gap-[8px] w-full">
-                                    <p className="font-[400] leading-[100%] text-[#080612] text-[12px]">Files to be submitted:</p>
-                                    <div className="flex flex-col gap-[10px]">
-                                        {fileMap.map((file, fileKey) => (
-                                            <React.Fragment key={`file-${fileKey}`}>
-                                                <ShadowCard>
-                                                    <div className="cursor-pointer flex gap-[10px] items-center p-[8px] px-[12px] w-full">
-                                                        <div className="bg-[#C0C0C0] h-[40px] w-[40px]"></div>
-                                                        <DetailCard
-                                                            cardName={file.fileName}
-                                                            cardDescription={file.fileDescription}
-                                                            isFile
-                                                            isTransparent
-                                                        />
-                                                    </div>
-                                                </ShadowCard>
+                    <div className="flex gap-[16px] w-full">
+                        <div className="flex-1 h-full">
+                            <CommonTextArea
+                                description="TESADSADQSDQ"
+                                height="330px"
+                                title="Test"
+                            />
+                        </div>
+                        <div className="w-[250px]">
+                            <ShadowCard white>
+                                <div className="flex flex-col gap-[12px] p-[12px] w-full">
+                                    <div className="flex justify-between w-full">
+                                        <h3 className="font-[600] text-[#080612] text-[12px]">Status:</h3>
+                                        <h4 className="font-[400] text-[#080612] text-[12px]">Pending</h4>
+                                    </div>
+                                    <div className="flex flex-col gap-[8px] w-full">
+                                        <p className="font-[400] leading-[100%] text-[#080612] text-[12px]">Files to be submitted:</p>
+                                        <div className="flex flex-col gap-[10px] max-h-[188px] overflow-y-auto py-[4px]">
+                                            {fileMap.map((file, fileKey) => (
+                                                <React.Fragment key={`file-${fileKey}`}>
+                                                    <ShadowCard>
+                                                        <div className="cursor-pointer flex gap-[10px] items-center p-[8px] px-[12px] w-full">
+                                                            <div className="bg-[#C0C0C0] h-[40px] w-[40px]"></div>
+                                                            <DetailCard
+                                                                cardName={file.fileName}
+                                                                cardDescription={file.fileDescription}
+                                                                isFile
+                                                                isTransparent
+                                                            />
+                                                        </div>
+                                                    </ShadowCard>
+                                                </React.Fragment>
+                                            ))}
+                                        </div>
+                                        <p className="font-[300] italic leading-[100%] ml-auto text-[#BF0A12] text-[12px]">Submit to update status</p>
+                                    </div>
+                                    <div className="flex gap-[8px] ml-auto mt-[4px]">
+                                        {buttonMap.map((button, buttonKey) => (
+                                            <React.Fragment key={`button-${buttonKey}`}>
+                                                <CommonButton
+                                                    buttonLabel={button.buttonLabel}
+                                                    buttonStyle={button.buttonStyle}
+                                                />
                                             </React.Fragment>
                                         ))}
                                     </div>
-                                    <p className="font-[300] italic leading-[100%] ml-auto text-[#BF0A12] text-[12px]">Submit to update status</p>
                                 </div>
-                                <div className="flex gap-[8px] ml-auto mt-[4px]">
-                                    {buttonMap.map((button, buttonKey) => (
-                                        <React.Fragment key={`button-${buttonKey}`}>
-                                            <CommonButton
-                                                buttonLabel={button.buttonLabel}
-                                                buttonStyle={button.buttonStyle}
-                                            />
-                                        </React.Fragment>
-                                    ))}
-                                </div>
-                            </div>
-                        </ShadowCard>
+                            </ShadowCard>
+                        </div>
                     </div>
                 </div>
             </ShadowCard>

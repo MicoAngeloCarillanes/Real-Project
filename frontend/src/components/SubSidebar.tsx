@@ -3,7 +3,7 @@ import logo from '@assets/images/au-logo.svg';
 import ShadowCard from '@components/card/ShadowCard';
 import DetailCard from '@components/card/DetailCard';
 import CommonDatepicker from '@components/datepicker/CommonDatepicker';
-import CommonMediaWithContent from '@components/Label/CommonMediaWithContent';
+import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import IconSelect from '@components/select/IconSelect';
 import { useEffect, useRef, useState } from 'react';
 

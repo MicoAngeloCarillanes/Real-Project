@@ -4,7 +4,7 @@ import supportIcon from '@assets/icons/support-icon.svg';
 import SidebarMenu from '@components/buttons/SidebarMenu';
 import BrandCard from '@components/card/BrandCard';
 import SearchContact from '@components/input/SearchContact';
-import CommonMediaWithContent from '@components/Label/CommonMediaWithContent';
+import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 
 export default function MainSidebar() {
     // Custom variables

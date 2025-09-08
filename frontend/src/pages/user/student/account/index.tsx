@@ -2,7 +2,7 @@ import lockIcon from '@assets/icons/lock-icon.svg';
 import background from '@assets/images/au-background.png';
 import halfBackground from '@assets/images/au-half-background.png';
 import BrandCard from '@components/card/BrandCard';
-import CommonMediaWithContent from '@components/Label/CommonMediaWithContent';
+import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import { Outlet } from 'react-router-dom';
 
 export default function StudentAccount() {

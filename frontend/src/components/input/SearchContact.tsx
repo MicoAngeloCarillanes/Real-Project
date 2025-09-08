@@ -1,5 +1,5 @@
 import auLogo from '@assets/images/au-logo.svg';
-import CommonMediaWithContent from '@components/Label/CommonMediaWithContent';
+import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import SearchIcon from '@mui/icons-material/SearchOutlined';
 import React, { useRef, useState } from 'react';
 
@@ -15,7 +15,7 @@ export default function SearchContact() {
         logo: auLogo,
         label: `Item ${i + 1}`
     }));
-    
+
     /**
      * Cancels the search mode when the Escape key is pressed.
      *
@@ -38,7 +38,7 @@ export default function SearchContact() {
             setIsSearching(false);
         }
     }
-    
+
     /**
      * Activates the search state and focuses the input field when search icon is clicked.
      */
@@ -53,16 +53,16 @@ export default function SearchContact() {
         <>
             <div
                 className={`
-                    flex h-[28px] items-center justify-between pr-[8px] relative text-white 
+                    flex h-[28px] items-center justify-between pr-[8px] relative text-white
                     ${isSearching ? 'bg-white pl-4 pr-2 rounded-full' : ''}
                 `}
                 ref={containerRef}
                 tabIndex={-1}
                 onBlur={handleSearchBlur}
             >
-                <label 
+                <label
                     className={`
-                        font-bold text-[14px] 
+                        font-bold text-[14px]
                         ${isSearching ? 'hidden' : ''}
                     `}
                 >
@@ -71,7 +71,7 @@ export default function SearchContact() {
                 <input
                     className={`
                         outline-none text-[12px] text-black w-full
-                        ${isSearching ? '' : 'hidden'} 
+                        ${isSearching ? '' : 'hidden'}
                     `}
                     placeholder="Enter contact name"
                     ref={inputRef}
@@ -82,7 +82,7 @@ export default function SearchContact() {
                     className={`${isSearching ? 'text-[#052554]' : ''} cursor-pointer`}
                     onClick={handleSearchClick}
                 >
-                    <SearchIcon 
+                    <SearchIcon
                         sx={{
                             width: 20, height: 20
                         }}
