@@ -15,7 +15,7 @@ interface SidebarMenuProps {
 
 /**
  * Sidebar menu component that displays navigation options based on the user's role.
- *  
+ *
  * @example
  * function MainSidebar() {
  *   return (
@@ -70,14 +70,14 @@ export default function SidebarMenu({
             navigate(`${tabLabel.toLowerCase()}`);
         }
     }
-    
+
     return (
         <ul className="flex flex-col gap-[4px]">
             {tabOptions.map((tab) => (
-                <li 
+                <li
                     className={`
                         bg-[#F6F4FB] cursor-pointer hover:bg-[#c7c9df] overflow-hidden px-[20px] py-[12px] relative rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-                        ${activeTab === tab.label ? '!bg-[#D4D9EA]' : ''} 
+                        ${activeTab === tab.label ? '!bg-[#D4D9EA]' : ''}
                     `}
                     key={tab.label}
                     onClick={() => handleSelectedTab(tab)}
@@ -90,6 +90,6 @@ export default function SidebarMenu({
                     )}
                 </li>
             ))}
-        </ul> 
+        </ul>
     );
 }

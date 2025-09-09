@@ -8,18 +8,24 @@ interface CourseListProps extends DetailCardProps {
     isGrid?: boolean;
 }
 
+interface courseMapProps {
+    cardDescription: string;
+    cardName: string;
+    courseColor: string;
+    pendingActCount: string;
+}
+
 export default function CourseList({
     isGrid,
     ...props
 }: CourseListProps) {
     const navigate = useNavigate();
-    const courseList = [
+    const courseMap: courseMapProps[] = [
         {
             cardDescription: 'ITC - 129',
             cardName: 'Computer Organization',
             courseColor: '#000000',
-            pendingActCount: '5',
-            onCourseClick: handleCourseClick
+            pendingActCount: '5'
         },
         {
             cardDescription: 'ITC - 101',
@@ -47,8 +53,8 @@ export default function CourseList({
         }
     ];
 
-    function handleCourseClick(courseId:string) {
-        navigate(`${courseId}/overview`);
+    function handleCourseClick(course: courseMapProps) {
+        navigate(`${course.cardName}/overview`);
     }
 
     return (
@@ -58,10 +64,10 @@ export default function CourseList({
                 ${isGrid ? 'grid gap-[20px] grid-cols-[repeat(auto-fit,minmax(200px,1fr))] grid-rows-[250px] w-full' : 'w-full flex flex-col gap-[12px]'}
             `}
         >
-            {courseList.map((course, key) => (
+            {courseMap.map((course, key) => (
                 <div
                     key={key}
-                    onClick={() => course.onCourseClick?.(course.cardDescription)}
+                    onClick={() => handleCourseClick(course)}
                 >
                     <ShadowCard white>
                         <div

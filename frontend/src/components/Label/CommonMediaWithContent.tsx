@@ -13,16 +13,21 @@ interface CommonMediaWithContentProps {
 
 /**
  * Common media label component that displays either an image or icon with label.
- * 
+ *
  * @example
  * import logo from '@assets/images/au-logo.svg';
- * 
+ *
  * function Contacts() {
  *   return (
- *      <CommonMediaWithContent 
- *          element={logo} 
- *          label="Arellano University"
- *      />
+ *      <CommonMediaWithContent
+ *          imageUrl={logo}
+ *          isVertical
+ *          size="LARGE"
+ *      >
+ *          <span className="leading-[100%] text-[16px] text-[black]">
+ *              Julius Robert T. Tolentino
+ *          </span>
+ *      </CommonMediaWithContent>
  *   );
  * }
  */
@@ -53,13 +58,13 @@ export default function CommonMediaWithContent({
     const style = size && styleMap[size];
 
     return (
-        <div 
+        <div
             className={`
                 ${isVertical ? 'flex flex-col items-center' : 'flex items-center'}
             `}
             style={style}
         >
-            <img 
+            <img
                 alt=""
                 height={style?.height}
                 src={imageUrl}

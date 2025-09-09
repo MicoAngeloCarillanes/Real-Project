@@ -1,16 +1,58 @@
 import arrowDropdownIcon from '@assets/icons/arrow-drop-down-icon.svg';
 import logo from '@assets/images/au-logo.svg';
-import DetailCard from '@components/card/DetailCard';
+import DetailCard, { CardStatusProps } from '@components/card/DetailCard';
 import ShadowCard from '@components/card/ShadowCard';
 import CommonDatepicker from '@components/datepicker/CommonDatepicker';
 import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import IconSelect from '@components/select/IconSelect';
 import { useEffect, useRef, useState } from 'react';
 
+interface TaskListProps {
+    cardName: string;
+    cardDescription: string;
+    dueDate: string;
+    cardStatus: CardStatusProps;
+}
+
 export default function SubSidebar() {
-    const timelineSortingOptions = ['All', 'Overdue', 'Upcoming', 'No due date'];
+    // Ref variables
     const listRef = useRef<HTMLDivElement>(null);
+    // State variables
     const [isOverflowing, setIsOverflowing] = useState(false);
+    // Custom variables
+    const timelineSortingOptions = ['All', 'Overdue', 'Upcoming', 'No due date'];
+    const taskList: TaskListProps[] = [
+        {
+            cardName: 'Introduction to Software Engineering',
+            cardDescription: 'ITC - 101 LEC',
+            dueDate: 'Due Sep. 15, 11:59 PM',
+            cardStatus: 'submitted'
+        },
+        {
+            cardName: 'Agile vs Waterfall Methodologies',
+            cardDescription: 'ITC - 102 LEC',
+            dueDate: 'Due Sep. 20, 11:59 PM',
+            cardStatus: 'submitted'
+        },
+        {
+            cardName: 'Software Development Life Cycle',
+            cardDescription: 'ITC - 103 LEC',
+            dueDate: 'Due Sep. 25, 11:59 PM',
+            cardStatus: 'pending'
+        },
+        {
+            cardName: 'Case Study: Library System',
+            cardDescription: 'ITC - 104 LEC',
+            dueDate: 'Due Sep. 30, 11:59 PM',
+            cardStatus: 'missed'
+        },
+        {
+            cardName: 'Requirements Gathering Techniques',
+            cardDescription: 'ITC - 105 LEC',
+            dueDate: 'Due Oct. 5, 11:59 PM',
+            cardStatus: 'pending'
+        }
+    ];
 
     useEffect(() => {
         const checkOverflow = () => {
@@ -20,16 +62,13 @@ export default function SubSidebar() {
             }
         };
 
-        // Run initially
         checkOverflow();
 
-        // Observe resizes
         const observer = new ResizeObserver(checkOverflow);
         if (listRef.current) {
             observer.observe(listRef.current);
         }
 
-        // Cleanup
         return () => observer.disconnect();
     }, []);
 
@@ -70,17 +109,17 @@ export default function SubSidebar() {
                     {/* Timeline list */}
                     <div
                         ref={listRef}
-                        className="flex flex-col gap-[8px] overflow-y-auto pr-[4px] scrollbar-thin"
+                        className="flex flex-col gap-[8px] overflow-y-auto pr-[4px] py-[4px] scrollbar-thin"
                     >
-                        {Array.from({ length: 10 })
-                            .map((_, index) => (
-                                <DetailCard
-                                    cardDescription="ITC - 129 LEC"
-                                    cardName="Learning Task No. 4 Jose Rizal the Movie"
-                                    dueDate="Due Nov. 29, 11:59 PM"
-                                    key={index}
-                                />
-                            ))}
+                        {taskList.map((task, taskKey) => (
+                            <DetailCard
+                                cardDescription={task.cardDescription}
+                                cardName={task.cardName}
+                                cardStatus={task.cardStatus}
+                                dueDate={task.dueDate}
+                                key={`task-${taskKey}`}
+                            />
+                        ))}
                     </div>
 
                     {/* Show only if overflowing */}

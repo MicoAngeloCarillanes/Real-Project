@@ -34,8 +34,29 @@ export default function DetailCard({
     isTask,
     isTransparent
 }: DetailCardProps) {
-    const [hovered, setHovered] = useState(false);
+    // State variables
+    const [isHovered, setIsHovered] = useState(false);
+    // Style variables
     const closedTaskStyle = 'bg-[#F6F4FB] opacity-[0.55]';
+    // Custom variables
+    const capitalizedStatus = cardStatus
+        ? cardStatus.charAt(0)
+            .toLocaleUpperCase() + cardStatus.slice(1)
+        : '';
+
+    /**
+     * Handle set hover state to true when mouse enters the element area
+     */
+    function handleHoverEnter() {
+        setIsHovered(true);
+    }
+
+    /**
+     * Handle set hover state to false when mouse exits the element area
+     */
+    function handleHoverLeave() {
+        setIsHovered(false);
+    }
 
     return (
         <div
@@ -43,23 +64,23 @@ export default function DetailCard({
                     flex flex-col gap-y-[4px]
                     ${isTransparent ? 'bg-transparent' : 'cursor-pointer px-[6px] py-[4px] rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] w-full'}
                     ${isTask ? '' : 'hover:opacity-[0.8]'}
-                    ${isTask || isFile ? '' : cardStatus === 'missed' ? 'bg-[#ffc5c8]' : cardStatus === 'submitted' ? 'bg-[#D4D9EA]' :  'bg-[#B6E7FE]'}
+                    ${isTask || isFile ? '' : cardStatus === 'missed' ? 'bg-[#ffc5c8]' : cardStatus === 'submitted' ? 'bg-[#B6E7FE]' :  'bg-[#D4D9EA]'}
                     ${!isTask ? '' : cardStatus === 'missed' ? `${closedTaskStyle}` : cardStatus === 'submitted' ? 'bg-[#FFFFFF]' :  cardStatus === 'pending' ? 'bg-[#F6F4FB]' : `${closedTaskStyle}`}
                     ${isBordered ? 'border-[1px] border-[#353A40]' : ''}
                 `}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            onMouseEnter={handleHoverEnter}
+            onMouseLeave={handleHoverLeave}
         >
             <h3
                 className={`
-                    font-[500] text-[12px] w-full
+                    font-[500] text-[14px] w-full
                     ${isCourse ? 'break-words' : 'truncate'}
                 `}
             >
                 {cardName}
             </h3>
             <div
-                className="flex justify-between text-[10px]"
+                className="flex justify-between text-[12px]"
             >
                 {isTask ? (
                     <>
@@ -74,16 +95,18 @@ export default function DetailCard({
                         </h4>
                     </>
                 ) : (
-                    <>
+                    <div className="flex flex-col">
                         <h4 className="leading-[100%]">{cardDescription}</h4>
-                        <h4 className="leading-[100%]">{dueDate}</h4>
-                    </>
+                        {dueDate && (
+                            <h4 className="leading-[100%] mt-[8px]">{dueDate}</h4>
+                        )}
+                    </div>
                 )}
             </div>
-            {(!isCourse && !isTask && !isFile) && hovered && (
+            {(!isCourse && !isTask && !isFile) && isHovered && (
                 <div
                     className={`
-                        ${cardStatus === 'missed' ? 'bg-[#ffc5c8]' : cardStatus === 'submitted' ? 'bg-[#D4D9EA]' :  'bg-[#B6E7FE]'} 
+                        ${cardStatus === 'missed' ? 'bg-[#ffc5c8]' : cardStatus === 'submitted' ? 'bg-[#B6E7FE]' :  'bg-[#D4D9EA]'}
                         absolute left-[-180px] px-[8px] py-[8px] rounded-[8px] text-[12px] top-[45px] w-[80%] z-[999]
                     `}
                 >
@@ -92,9 +115,7 @@ export default function DetailCard({
                         <h4>{cardDescription}</h4>
                         <h4>{dueDate}</h4>
                         {cardStatus && (
-                            <h4>{cardStatus.charAt(0)
-                                .toLocaleUpperCase() + cardStatus.slice(1)}
-                            </h4>
+                            <h4>{capitalizedStatus}</h4>
                         )}
                     </div>
                 </div>

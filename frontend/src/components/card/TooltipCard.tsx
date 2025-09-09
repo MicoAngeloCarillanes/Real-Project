@@ -18,9 +18,9 @@ export default function TooltipCard({
             <ul className="absolute bg-white flex flex-col font-[400] not-italic py-[4px] right-0 rounded-sm shadow-[0_4px_4px_rgba(0,0,0,0.25)] text-[#052554] text-[12px]">
                 {options.map((option) => {
                     return (
-                        <li 
+                        <li
                             className={`
-                                px-[8px] py-[12px] text-[#080612] text-nowrap 
+                                px-[8px] py-[12px] text-[#080612] text-nowrap
                                 ${selectedOption === option ? 'bg-[#C0C0C0]' : 'hover:bg-[#B6E7FE]'}
                             `}
                             key={option}

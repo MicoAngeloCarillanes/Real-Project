@@ -1,4 +1,4 @@
-import StudentProfile from '@pages/user/student/settings';
+import StudentProfile from '@pages/user/student/profile';
 
 import type { RouteObject } from 'react-router-dom';
 
