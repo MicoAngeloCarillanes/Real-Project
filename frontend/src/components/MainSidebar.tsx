@@ -25,18 +25,14 @@ export default function MainSidebar() {
             </div>
             <div className="flex flex-col gap-[8px] mt-auto">
                 {iconButtonsMap.map((button, key) => (
-                    <div 
+                    <div
                         className="cursor-pointer hover:underline"
                         key={key}
                     >
                         <CommonMediaWithContent
                             imageUrl={button.icon}
-                            size="SMALL"
-                        >
-                            <span className="font-[400] leading-[100%] text-[12px] text-nowrap">
-                                {button.label}
-                            </span>
-                        </CommonMediaWithContent>
+                            mediaLabel={button.label}
+                        />
                     </div>
                 ))}
             </div>

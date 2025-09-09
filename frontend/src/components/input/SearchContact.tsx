@@ -93,13 +93,11 @@ export default function SearchContact() {
                 {items.map((item) => (
                     <div key={item.id} className="cursor-pointer hover:bg-[#ffffff4D]">
                         <CommonMediaWithContent
+                            imageSize="MEDIUM"
                             imageUrl={item.logo}
-                            size="MEDIUM"
-                        >
-                            <span className="font-[400] leading-[100%] overflow-hidden text-[12px] text-nowrap">
-                                Julius Robert Tolentino{item.label}
-                            </span>
-                        </CommonMediaWithContent>
+                            isOverflowHidden
+                            mediaLabel={`Julius Robert Tolentino${item.label}`}
+                        />
                     </div>
                 ))}
             </div>

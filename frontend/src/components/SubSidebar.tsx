@@ -77,14 +77,13 @@ export default function SubSidebar() {
             <ShadowCard>
                 <div className="flex flex-col gap-[20px] p-[16px] w-full">
                     <CommonMediaWithContent
+                        fontSize="MEDIUM"
+                        imageSize="LARGE"
                         imageUrl={logo}
+                        isCentered
                         isVertical
-                        size="LARGE"
-                    >
-                        <span className="leading-[100%] text-[16px] text-[black]">
-                            Julius Robert T. Tolentino
-                        </span>
-                    </CommonMediaWithContent>
+                        mediaLabel="Julius Robert T. Tolentino"
+                    />
                     <ShadowCard white>
                         <CommonDatepicker />
                     </ShadowCard>

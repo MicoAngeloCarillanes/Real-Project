@@ -1,9 +1,10 @@
 import CommonBadge from '@components/badge/CommonBadge';
-import DetailCard, { DetailCardProps } from '@components/card/DetailCard';
+import DetailCard from '@components/card/DetailCard';
 import ShadowCard from '@components/card/ShadowCard';
+import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import { useNavigate } from 'react-router-dom';
 
-interface CourseListProps extends DetailCardProps {
+interface CourseListProps {
     // Checks whether course list is grid or list
     isGrid?: boolean;
 }
@@ -12,12 +13,11 @@ interface courseMapProps {
     cardDescription: string;
     cardName: string;
     courseColor: string;
-    pendingActCount: string;
+    pendingActCount: number;
 }
 
 export default function CourseList({
-    isGrid,
-    ...props
+    isGrid
 }: CourseListProps) {
     const navigate = useNavigate();
     const courseMap: courseMapProps[] = [
@@ -25,31 +25,31 @@ export default function CourseList({
             cardDescription: 'ITC - 129',
             cardName: 'Computer Organization',
             courseColor: '#000000',
-            pendingActCount: '5'
+            pendingActCount: 5
         },
         {
             cardDescription: 'ITC - 101',
             cardName: 'Introduction to Computing',
             courseColor: '#1E90FF',
-            pendingActCount: '2'
+            pendingActCount: 2
         },
         {
             cardDescription: 'ITC - 202',
             cardName: 'Data Structures and Algorithms',
             courseColor: '#228B22',
-            pendingActCount: '7'
+            pendingActCount: 7
         },
         {
             cardDescription: 'ITC - 305',
             cardName: 'Database Management Systems',
             courseColor: '#FF8C00',
-            pendingActCount: '3'
+            pendingActCount: 3
         },
         {
             cardDescription: 'ITC - 410',
             cardName: 'Software Engineering',
             courseColor: '#8A2BE2',
-            pendingActCount: '2'
+            pendingActCount: 2
         }
     ];
 
@@ -76,7 +76,7 @@ export default function CourseList({
                                 ${isGrid ? 'h-[250px]' : 'flex gap-[16px] w-full px-[16px] py-[8px]'}
                             `}
                         >
-                            <div
+                            {/* <div
                                 className={isGrid ? 'h-[160px] w-full rounded-t-[8px]' : 'h-[36px] w-[36px]'}
                                 style={{ backgroundColor: course.courseColor }}
                             ></div>
@@ -88,7 +88,21 @@ export default function CourseList({
                                     isTransparent
                                     {...props}
                                 />
-                            </div>
+                            </div> */}
+                            <CommonMediaWithContent
+                                boxColor={course.courseColor}
+                                boxSize={isGrid ? 'MEDIUM' : 'SMALL'}
+                                isVertical={isGrid}
+                            >
+                                <div className={isGrid ? 'p-[8px]' : 'flex-1'}>
+                                    <DetailCard
+                                        cardDescription={course.cardDescription}
+                                        cardName={course.cardName}
+                                        isCourse
+                                        isTransparent
+                                    />
+                                </div>
+                            </CommonMediaWithContent>
                             <CommonBadge
                                 count={course.pendingActCount}
                                 size="sm"

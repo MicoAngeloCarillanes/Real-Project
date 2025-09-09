@@ -1,14 +1,26 @@
 type size = 'SMALL' | 'MEDIUM' | 'LARGE';
 
 interface CommonMediaWithContentProps {
+    // Box color
+    boxColor?: string;
+    // Box size
+    boxSize?: Exclude<size, 'LARGE'>;
     // Children to be rendered besides image
     children?: React.ReactNode;
+    // Label styling
+    fontSize?: Exclude<size, 'LARGE'>;
+    // Checks whether the content inside are centered
+    isCentered?: boolean;
     // Image to be rendered
     imageUrl?: string;
+    // Image style
+    imageSize?: size;
+    // Checks whether to hide overflow or not
+    isOverflowHidden?: boolean;
     // Checks whether display is vertical or horizontal
     isVertical?: boolean;
-    // Spacing between image and children
-    size?: size;
+    // Media label
+    mediaLabel?: string;
 }
 
 /**
@@ -32,45 +44,90 @@ interface CommonMediaWithContentProps {
  * }
  */
 export default function CommonMediaWithContent({
+    boxColor = '#C0C0C0',
+    boxSize = 'SMALL',
     children,
+    fontSize = 'SMALL',
+    isCentered,
+    imageSize = 'SMALL',
     imageUrl,
+    isOverflowHidden,
     isVertical,
-    size
+    mediaLabel
 }: CommonMediaWithContentProps) {
     // Style variables
-    const styleMap = {
+    const boxStypeMap = {
+        'MEDIUM': {
+            height: '160px',
+            width: '100%',
+            borderTopLeftRadius: '8px',
+            borderTopRightRadius: '8px'
+        },
         'SMALL': {
-            gap: 6,
-            height: '16',
-            width: '14'
+            height: '40px',
+            width: '40px'
+        }
+    };
+    const imageStyleMap = {
+        'LARGE': {
+            height: '90',
+            width: '90'
         },
         'MEDIUM': {
-            gap: 6,
             height: '25',
             width: '25'
         },
-        'LARGE': {
-            gap: 6,
-            height: '90',
-            width: '90'
+        'SMALL': {
+            height: '16',
+            width: '14'
         }
     };
-    const style = size && styleMap[size];
+    const fontStyleMap = {
+        'MEDIUM': {
+            fontWeight: 400,
+            fontSize: '16px',
+            color: '#080612'
+        },
+        'SMALL': {
+            fontWeight: 400,
+            fontSize: '12px',
+            color: '#FFFFFF'
+        }
+    };
+    const boxStyle = boxSize && { ...boxStypeMap[boxSize], backgroundColor: boxColor };
+    const imageStyle = imageSize && imageStyleMap[imageSize];
+    const fontStyle = fontSize && fontStyleMap[fontSize];
 
     return (
         <div
             className={`
-                ${isVertical ? 'flex flex-col items-center' : 'flex items-center'}
+                gap-[6px] w-full flex
+                ${isVertical ? 'flex-col' : ''}
+                ${isCentered ? 'items-center' : ''}
             `}
-            style={style}
         >
-            <img
-                alt=""
-                height={style?.height}
-                src={imageUrl}
-                width={style?.width}
-            />
+            {imageUrl ? (
+                <img
+                    alt=""
+                    height={imageStyle?.height}
+                    src={imageUrl}
+                    width={imageStyle?.width}
+                />
+            ) : (
+                <div style={boxStyle}></div>
+            )}
             {children}
+            {mediaLabel && (
+                <span
+                    className={`
+                        leading-[100%] text-nowrap
+                        ${isOverflowHidden ? 'overflow-hidden' : ''}
+                    `}
+                    style={fontStyle}
+                >
+                    {mediaLabel}
+                </span>
+            )}
         </div>
     );
 }

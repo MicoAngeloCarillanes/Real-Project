@@ -1,5 +1,6 @@
 import DetailCard from '@components/card/DetailCard';
 import ShadowCard from '@components/card/ShadowCard';
+import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import React from 'react';
 
 export interface FileMapProps {
@@ -23,13 +24,14 @@ export default function FileAttachment({
                 >
                     <ShadowCard>
                         <div className="cursor-pointer flex gap-[10px] items-center max-h-[264px] px-[12px] py-[8px] w-full">
-                            <div className="bg-[#C0C0C0] h-[40px] w-[40px]"></div>
-                            <DetailCard
-                                cardName={file.fileName}
-                                cardDescription={file.fileDescription}
-                                isFile
-                                isTransparent
-                            />
+                            <CommonMediaWithContent>
+                                <DetailCard
+                                    cardDescription={file.fileDescription}
+                                    cardName={file.fileName}
+                                    isCourse
+                                    isTransparent
+                                />
+                            </CommonMediaWithContent>
                         </div>
                     </ShadowCard>
                 </React.Fragment>
