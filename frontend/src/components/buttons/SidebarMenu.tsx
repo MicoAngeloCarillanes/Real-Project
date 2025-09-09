@@ -36,7 +36,7 @@ export default function SidebarMenu({
             { label: 'Dashboard', path: 'dashboard' },
             { label: 'Course', path: 'course' },
             { label: 'Chats', path: 'chats' },
-            { label: 'Settings', path: 'settings' }
+            { label: 'Profile', path: 'profile' }
         ],
         faculty: [
             { label: 'Dashboard', path: 'dashboard' },

@@ -1,23 +1,24 @@
+import CommonBadge from '@components/badge/CommonBadge';
 import TooltipCard from '@components/card/TooltipCard';
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface IconSelectProps {
     height?: number;
     imageUrl?: string;
-    selectOptions?: string[];
-    width?: number;
     isHeader?: boolean;
     pendingActCount?: string;
+    selectOptions?: string[];
+    width?: number;
     onIconClick?: VoidFunction;
 }
 
-export default function IconSelect({ 
+export default function IconSelect({
     height,
     imageUrl,
-    selectOptions,
-    width,
     isHeader,
     pendingActCount,
+    selectOptions,
+    width,
     onIconClick
 }: IconSelectProps) {
     const [toggleSelect, setToggleSelect] = useState(false);
@@ -49,11 +50,9 @@ export default function IconSelect({
     function handleToggle() {
         setToggleSelect((prev) => !prev);
     }
-    
-    const testStyle = { height: height };
 
     return (
-        <i 
+        <i
             className={`
                 hover:cursor-pointer relative
                 ${isHeader ? 'h-[20px] w-[20px] bg-[#0C60A1] flex items-center justify-center rounded-full' : ''}
@@ -62,25 +61,24 @@ export default function IconSelect({
             onClick={onIconClick && onIconClick}
         >
             <span onClick={selectOptions ? handleToggle : undefined}>
-                
                 <img
                     height={height}
                     width={width}
                     src={imageUrl}
-                    style={ testStyle }
                 />
             </span>
             {toggleSelect && selectOptions && (
-                <TooltipCard 
-                    options={selectOptions} 
+                <TooltipCard
+                    options={selectOptions}
                     onSelect={handleSelectOption}
                     selectedOption={selectedOption}
                 />
             )}
             {pendingActCount && (
-                <span className="absolute bg-[#BF0A12] flex font-[600] h-[12px] items-center justify-center right-[-4px] rounded-full text-[#FFFFFF] text-[8px] top-[-4px] w-[12px]">
-                    {pendingActCount}
-                </span>
+                <CommonBadge
+                    count={pendingActCount}
+                    size="xm"
+                />
             )}
         </i>
     );

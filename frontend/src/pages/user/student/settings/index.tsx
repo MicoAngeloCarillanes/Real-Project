@@ -1,6 +1,6 @@
 import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 
-export default function StudentSettings() {
+export default function StudentProfile() {
 
     return (
         <div>

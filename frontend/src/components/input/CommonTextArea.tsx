@@ -19,7 +19,7 @@ export default function CommonTextArea({
     return(
         <ShadowCard white>
             <div
-                className="flex flex-col gap-[8px] h-[100%] p-[8px] text-[#080612] w-full"
+                className="flex flex-col gap-[8px] h-full p-[8px] text-[#080612] w-full"
                 style={{ height }}
             >
                 {title && (
@@ -29,9 +29,9 @@ export default function CommonTextArea({
                     <p className="font-[400] leading-[100%] text-[12px]">{description}</p>
                 )}
                 <textarea
-                    className="bg-[#EDEDF0] border p-[8px] placeholder-[#939393] resize-none rounded-[8px] text-[14px] w-full"
+                    className="bg-[#EDEDF0] border h-full p-[8px] placeholder-[#939393] resize-none rounded-[8px] text-[14px] w-full"
                     style={{ height }}
-                    placeholder="Enter your text here..."
+                    placeholder="Write your thoughts here..."
                     {...props}
                 />
             </div>

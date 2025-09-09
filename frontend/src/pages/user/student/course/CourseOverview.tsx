@@ -1,9 +1,10 @@
+import messageIcon from '@assets/icons/message-icon.svg';
+import CommonBadge from '@components/badge/CommonBadge';
+import DetailCard, { CardStatusProps } from '@components/card/DetailCard';
+import ShadowCard from '@components/card/ShadowCard';
 import CommonHeader from '@components/container/CommonHeader';
 import MainDiv from '@components/container/MainDiv';
-import messageIcon from '@assets/icons/message-icon.svg';
-import ShadowCard from '@components/card/ShadowCard';
 import React from 'react';
-import DetailCard, { CardStatusProps } from '@components/card/DetailCard';
 import { useNavigate, useParams } from 'react-router-dom';
 
 interface TaskProps {
@@ -170,9 +171,10 @@ export default function CourseOverview() {
                                             />
                                         </div>
                                     ))}
-                                    <i className="absolute bg-[#BF0A12] flex font-[800] h-[20px] items-center justify-center leading-[100%] not-italic right-[-10px] rounded-full text-[#FFFFFF] text-[10px] top-[-10px] w-[20px]">
-                                        {course.tasks.filter((task) => task.taskStatus === 'pending').length}
-                                    </i>
+                                    <CommonBadge
+                                        count={course.tasks.filter((task) => task.taskStatus === 'pending').length}
+                                        size="m"
+                                    />
                                 </div>
                             </ShadowCard>
                         </React.Fragment>

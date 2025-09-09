@@ -1,7 +1,7 @@
 import arrowDropdownIcon from '@assets/icons/arrow-drop-down-icon.svg';
 import logo from '@assets/images/au-logo.svg';
-import ShadowCard from '@components/card/ShadowCard';
 import DetailCard from '@components/card/DetailCard';
+import ShadowCard from '@components/card/ShadowCard';
 import CommonDatepicker from '@components/datepicker/CommonDatepicker';
 import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import IconSelect from '@components/select/IconSelect';
@@ -38,7 +38,7 @@ export default function SubSidebar() {
             <ShadowCard>
                 <div className="flex flex-col gap-[20px] p-[16px] w-full">
                     <CommonMediaWithContent
-                        imageUrl={logo} 
+                        imageUrl={logo}
                         isVertical
                         size="LARGE"
                     >
@@ -47,7 +47,7 @@ export default function SubSidebar() {
                         </span>
                     </CommonMediaWithContent>
                     <ShadowCard white>
-                        <CommonDatepicker />                
+                        <CommonDatepicker />
                     </ShadowCard>
                 </div>
             </ShadowCard>

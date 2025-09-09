@@ -1,5 +1,6 @@
-import ShadowCard from '@components/card/ShadowCard';
+import CommonBadge from '@components/badge/CommonBadge';
 import DetailCard, { DetailCardProps } from '@components/card/DetailCard';
+import ShadowCard from '@components/card/ShadowCard';
 import { useNavigate } from 'react-router-dom';
 
 interface CourseListProps extends DetailCardProps {
@@ -82,9 +83,10 @@ export default function CourseList({
                                     {...props}
                                 />
                             </div>
-                            <span className="absolute bg-[#BF0A12] flex font-[600] h-[16px] items-center justify-center right-[-5px] rounded-full text-[#FFFFFF] text-[10px] top-[-5px] w-[16px]">
-                                {course.pendingActCount}
-                            </span>
+                            <CommonBadge
+                                count={course.pendingActCount}
+                                size="sm"
+                            />
                         </div>
                     </ShadowCard>
                 </div>
