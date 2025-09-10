@@ -5,7 +5,7 @@ export default function CourseInstructionArea({
     fileList
 }: FileAttachmentProps) {
 
-    return(
+    return (
         <ShadowCard white>
             <div className="flex flex-1 flex-col gap-[6px] p-[12px]">
                 <h3 className="font-[600] leading-[100%] text-[#080612] text-[14px]">Learning Task No. 4 Jose Rizal the Movie</h3>

@@ -1,6 +1,7 @@
 import auLogo from '@assets/images/au-logo.svg';
 import CommonMediaWithContent from '@components/label/CommonMediaWithContent';
 import SearchIcon from '@mui/icons-material/SearchOutlined';
+import { classMerge } from '@utils/css.util';
 import React, { useRef, useState } from 'react';
 
 export default function SearchContact() {
@@ -52,34 +53,45 @@ export default function SearchContact() {
     return (
         <>
             <div
-                className={`
-                    flex h-[28px] items-center justify-between pr-[8px] relative text-white
-                    ${isSearching ? 'bg-white pl-4 pr-2 rounded-full' : ''}
-                `}
+                className={
+                    classMerge(
+                        'flex h-[28px] items-center justify-between pr-[8px] relative text-white',
+                        isSearching && 'bg-white pl-4 pr-2 rounded-full'
+                    )
+                }
                 ref={containerRef}
                 tabIndex={-1}
                 onBlur={handleSearchBlur}
             >
                 <label
-                    className={`
-                        font-bold text-[14px]
-                        ${isSearching ? 'hidden' : ''}
-                    `}
+                    className={
+                        classMerge(
+                            'font-bold text-[14px]',
+                            isSearching && 'hidden'
+                        )
+                    }
                 >
                     Contacts
                 </label>
                 <input
-                    className={`
-                        outline-none text-[12px] text-black w-full
-                        ${isSearching ? '' : 'hidden'}
-                    `}
+                    className={
+                        classMerge(
+                            'outline-none text-[12px] text-black w-full',
+                            !isSearching && 'hidden'
+                        )
+                    }
                     placeholder="Enter contact name"
                     ref={inputRef}
                     type="text"
                     onKeyDown={handleCancelSearch}
                 />
                 <span
-                    className={`${isSearching ? 'text-[#052554]' : ''} cursor-pointer`}
+                    className={
+                        classMerge(
+                            isSearching && 'text-[#052554]',
+                            'cursor-pointer'
+                        )
+                    }
                     onClick={handleSearchClick}
                 >
                     <SearchIcon
@@ -89,7 +101,7 @@ export default function SearchContact() {
                     />
                 </span>
             </div>
-            <div className="[scrollbar-color:#FFFFFF_transparent] [scrollbar-width:thin] border-b border-t border-white overflow-y-auto p-[4px] pr-[10px] text-wrap">
+            <div className="[scrollbar-color:#FFFFFF_transparent] [scrollbar-width:thin] border-b border-t border-white overflow-x-hidden overflow-y-auto p-[4px] pr-[10px] text-wrap">
                 {items.map((item) => (
                     <div key={item.id} className="cursor-pointer hover:bg-[#ffffff4D]">
                         <CommonMediaWithContent

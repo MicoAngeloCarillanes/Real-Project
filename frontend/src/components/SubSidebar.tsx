@@ -72,7 +72,7 @@ export default function SubSidebar() {
         return () => observer.disconnect();
     }, []);
 
-    return(
+    return (
         <div className="bg-transparent bottom-[25px] fixed flex flex-col gap-[16px] py-[16px] right-[9px] rounded-[8px] top-[25px] w-[250px]">
             <ShadowCard>
                 <div className="flex flex-col gap-[20px] p-[16px] w-full">

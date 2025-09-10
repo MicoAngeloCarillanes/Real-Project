@@ -1,3 +1,4 @@
+import { classMerge } from '@utils/css.util';
 import React, { useState } from 'react';
 
 export default function Calendar() {
@@ -58,19 +59,21 @@ export default function Calendar() {
             <div className="font-[600] leading-[100%] mb-[16px] text-[#052554] text-[12px] text-center">{monthLabel}</div>
             <div className="gap-x-[12px] gap-y-[8px] grid grid-cols-[repeat(7,minmax(0,1fr))]">
                 {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
-                    <div 
+                    <div
                         className="font-[500] mb-[4px] text-[#052554] text-[10px] text-center"
-                        key={day} 
+                        key={day}
                     >
                         {day}
                     </div>
                 ))}
                 {calendarDays.map((date, i) => (
                     <div
-                        className={`
-                            cursor-pointer text-[12px] text-center
-                            ${date.currentMonth ? '#080612' : '#C0C0C0'}
-                        `}
+                        className={
+                            classMerge(
+                                'cursor-pointer text-[12px] text-center',
+                                date.currentMonth ? 'text-[#080612]' : 'text-[#C0C0C0]'
+                            )
+                        }
                         key={i}
                     >
                         {date.day}

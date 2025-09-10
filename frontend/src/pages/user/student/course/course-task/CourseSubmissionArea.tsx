@@ -19,7 +19,7 @@ export default function CourseSubmissionArea({
         }
     ];
 
-    return(
+    return (
         <div className="w-full">
             <div className="flex gap-[16px] w-full">
                 <CommonTextArea

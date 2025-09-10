@@ -1,3 +1,5 @@
+import { classMerge } from '@utils/css.util';
+
 interface TooltipCardProps {
     // Option list of the tool tip card
     options: string[];
@@ -19,10 +21,14 @@ export default function TooltipCard({
                 {options.map((option) => {
                     return (
                         <li
-                            className={`
-                                px-[8px] py-[12px] text-[#080612] text-nowrap
-                                ${selectedOption === option ? 'bg-[#C0C0C0]' : 'hover:bg-[#B6E7FE]'}
-                            `}
+                            className={
+                                classMerge(
+                                    'px-[8px] py-[12px] text-[#080612] text-nowrap',
+                                    selectedOption === option
+                                        ? 'bg-[#C0C0C0]'
+                                        : 'hover:bg-[#B6E7FE]'
+                                )
+                            }
                             key={option}
                             onClick={() => onSelect(option)}
                         >

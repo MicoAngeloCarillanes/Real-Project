@@ -2,9 +2,9 @@ import messageIcon from '@assets/icons/message-icon.svg';
 import ShadowCard from '@components/card/ShadowCard';
 import CommonHeader from '@components/container/CommonHeader';
 import MainDiv from '@components/container/MainDiv';
+import CourseInstructionArea from '@pages/user/student/course/course-task/CourseInstructionArea';
 import CourseSubmissionArea from '@pages/user/student/course/course-task/CourseSubmissionArea';
 import { FileMapProps } from '@pages/user/student/course/course-task/FileAttachment';
-import CourseInstructionArea from './CourseInstructionArea';
 
 export default function CourseTask() {
     const iconMap = [

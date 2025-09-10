@@ -38,7 +38,7 @@ export default function CommonBadge({
     };
     const badgeSize = size ? badgeSizeMap[size] : {};
 
-    return(
+    return (
         <span
             className="absolute bg-[#BF0A12] flex items-center justify-center leading-[100%] rounded-full text-[#FFFFFF]"
             style={badgeSize}

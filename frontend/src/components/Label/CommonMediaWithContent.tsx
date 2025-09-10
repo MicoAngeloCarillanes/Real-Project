@@ -1,3 +1,5 @@
+import { classMerge } from '@utils/css.util';
+
 type size = 'SMALL' | 'MEDIUM' | 'LARGE';
 
 interface CommonMediaWithContentProps {
@@ -70,8 +72,8 @@ export default function CommonMediaWithContent({
     };
     const imageStyleMap = {
         'LARGE': {
-            height: '90',
-            width: '90'
+            height: '80',
+            width: '80'
         },
         'MEDIUM': {
             height: '25',
@@ -100,15 +102,16 @@ export default function CommonMediaWithContent({
 
     return (
         <div
-            className={`
-                gap-[6px] w-full flex
-                ${isVertical ? 'flex-col' : ''}
-                ${isCentered ? 'items-center' : ''}
-            `}
+            className={
+                classMerge(
+                    'gap-[6px] w-full flex',
+                    isVertical && 'flex-col',
+                    isCentered && 'items-center'
+                )
+            }
         >
             {imageUrl ? (
                 <img
-                    alt=""
                     height={imageStyle?.height}
                     src={imageUrl}
                     width={imageStyle?.width}
@@ -116,18 +119,22 @@ export default function CommonMediaWithContent({
             ) : (
                 <div style={boxStyle}></div>
             )}
-            {children}
-            {mediaLabel && (
-                <span
-                    className={`
-                        leading-[100%] text-nowrap
-                        ${isOverflowHidden ? 'overflow-hidden' : ''}
-                    `}
-                    style={fontStyle}
-                >
-                    {mediaLabel}
-                </span>
-            )}
+            <div className="flex flex-col gap-[8px]">
+                {children}
+                {mediaLabel && (
+                    <span
+                        className={
+                            classMerge(
+                                'leading-[100%] text-nowrap',
+                                isOverflowHidden && 'overflow-hidden'
+                            )
+                        }
+                        style={fontStyle}
+                    >
+                        {mediaLabel}
+                    </span>
+                )}
+            </div>
         </div>
     );
 }

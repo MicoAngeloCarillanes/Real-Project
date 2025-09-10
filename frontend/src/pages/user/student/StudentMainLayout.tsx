@@ -1,8 +1,8 @@
 
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import MainSidebar from '@components/MainSidebar';
 import SubSidebar from '@components/SubSidebar';
 import { useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 export default function StudentMainLayout() {
     // Hooks
@@ -26,7 +26,7 @@ export default function StudentMainLayout() {
         }
     }, [userName, navigate]);
 
-    return(
+    return (
         <>
             {accountCondition ? (
                 <Outlet />

@@ -1,3 +1,4 @@
+import { classMerge } from '@utils/css.util';
 import { useState } from 'react';
 
 export type CardStatusProps = 'pending' | 'missed' | 'submitted' | 'completed';
@@ -60,22 +61,46 @@ export default function DetailCard({
 
     return (
         <div
-            className={`
-                    flex flex-col gap-y-[4px]
-                    ${isTransparent ? 'bg-transparent' : 'cursor-pointer px-[6px] py-[4px] rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] w-full'}
-                    ${isTask ? '' : 'hover:opacity-[0.8]'}
-                    ${isTask || isFile ? '' : cardStatus === 'missed' ? 'bg-[#ffc5c8]' : cardStatus === 'submitted' ? 'bg-[#B6E7FE]' :  'bg-[#D4D9EA]'}
-                    ${!isTask ? '' : cardStatus === 'missed' ? `${closedTaskStyle}` : cardStatus === 'submitted' ? 'bg-[#FFFFFF]' :  cardStatus === 'pending' ? 'bg-[#F6F4FB]' : `${closedTaskStyle}`}
-                    ${isBordered ? 'border-[1px] border-[#353A40]' : ''}
-                `}
+            className={
+                classMerge(
+                    'flex flex-col gap-y-[4px]',
+                    isTransparent
+                        ? 'bg-transparent'
+                        : 'cursor-pointer px-[6px] py-[4px] rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] w-full',
+                    isTask
+                        ? ''
+                        : 'hover:opacity-[0.8]',
+                    isTask || isFile
+                        ? ''
+                        : cardStatus === 'missed'
+                            ? 'bg-[#ffc5c8]'
+                            : cardStatus === 'submitted'
+                                ? 'bg-[#B6E7FE]'
+                                :  'bg-[#D4D9EA]',
+                    !isTask
+                        ? ''
+                        : cardStatus === 'missed'
+                            ? `${closedTaskStyle}`
+                            : cardStatus === 'submitted'
+                                ? 'bg-[#FFFFFF]'
+                                :  cardStatus === 'pending'
+                                    ? 'bg-[#F6F4FB]'
+                                    : `${closedTaskStyle}`,
+                    isBordered
+                        ? 'border-[1px] border-[#353A40]'
+                        : ''
+                )
+            }
             onMouseEnter={handleHoverEnter}
             onMouseLeave={handleHoverLeave}
         >
             <h3
-                className={`
-                    font-[500] text-[14px] w-full
-                    ${isCourse ? 'break-words' : 'truncate'}
-                `}
+                className={
+                    classMerge(
+                        'font-[500] text-[14px] w-full',
+                        isCourse ? 'break-words' : 'truncate'
+                    )
+                }
             >
                 {cardName}
             </h3>
@@ -86,10 +111,12 @@ export default function DetailCard({
                     <>
                         <h4 className="leading-[100%]">{dueDate}</h4>
                         <h4
-                            className={`
-                                "leading-[100%]" font-[300]
-                                ${cardStatus === 'missed' ? 'text-[#BF0A12]' : cardStatus === 'completed' ? 'text-[#0ABF10]' :  'text-[#353A40]'}
-                            `}
+                            className={
+                                classMerge(
+                                    'leading-[100%] font-[300]',
+                                    cardStatus === 'missed' ? 'text-[#BF0A12]' : cardStatus === 'completed' ? 'text-[#0ABF10]' :  'text-[#353A40]'
+                                )
+                            }
                         >
                             {cardStatus}
                         </h4>
@@ -105,10 +132,16 @@ export default function DetailCard({
             </div>
             {(!isCourse && !isTask && !isFile) && isHovered && (
                 <div
-                    className={`
-                        ${cardStatus === 'missed' ? 'bg-[#ffc5c8]' : cardStatus === 'submitted' ? 'bg-[#B6E7FE]' :  'bg-[#D4D9EA]'}
-                        absolute left-[-180px] px-[8px] py-[8px] rounded-[8px] text-[12px] top-[45px] w-[80%] z-[999]
-                    `}
+                    className={
+                        classMerge(
+                            'absolute left-[-180px] px-[8px] py-[8px] rounded-[8px] text-[12px] top-[45px] w-[80%] z-[999]',
+                            cardStatus === 'missed'
+                                ? 'bg-[#ffc5c8]'
+                                : cardStatus === 'submitted'
+                                    ? 'bg-[#B6E7FE]'
+                                    :  'bg-[#D4D9EA]'
+                        )
+                    }
                 >
                     <h3 className="break-words font-[500] text-[12px]">{cardName}</h3>
                     <div className="flex flex-col justify-between text-[10px]">

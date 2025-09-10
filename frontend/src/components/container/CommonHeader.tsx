@@ -1,4 +1,5 @@
 import IconSelect, { IconSelectProps } from '@components/select/IconSelect';
+import { classMerge } from '@utils/css.util';
 import React from 'react';
 
 interface CommonHeaderProps {
@@ -23,18 +24,24 @@ export default function CommonHeader({
             <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[4px]">
                     <h1
-                        className={`
-                            font-[700] leading-[100%] text-[20px]
-                            ${isCourseHeader ? 'text-[#080612]' : 'text-[#0C60A1]'}
-                        `}
+                        className={
+                            classMerge(
+                                'font-[700] leading-[100%] text-[20px]',
+                                isCourseHeader
+                                    ? 'text-[#080612]'
+                                    : 'text-[#0C60A1]'
+                            )
+                        }
                     >
                         {title}
                     </h1>
                     <h2
-                        className={`
-                            leading-[100%] text-[12px] #080612
-                            ${isCourseHeader ? 'font-[300]' : 'font-[400]'}
-                        `}
+                        className={
+                            classMerge(
+                                'leading-[100%] text-[12px] #080612',
+                                isCourseHeader ? 'font-[300]' : 'font-[400]'
+                            )
+                        }
                     >
                         {subTitle}
                     </h2>

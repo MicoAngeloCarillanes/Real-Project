@@ -1,5 +1,6 @@
 import CommonBadge from '@components/badge/CommonBadge';
 import TooltipCard from '@components/card/TooltipCard';
+import { classMerge } from '@utils/css.util';
 import { useEffect, useRef, useState } from 'react';
 
 export interface IconSelectProps {
@@ -53,10 +54,12 @@ export default function IconSelect({
 
     return (
         <i
-            className={`
-                hover:cursor-pointer relative
-                ${isHeader ? 'h-[20px] w-[20px] bg-[#0C60A1] flex items-center justify-center rounded-full' : ''}
-            `}
+            className={
+                classMerge(
+                    'hover:cursor-pointer relative',
+                    isHeader && 'h-[20px] w-[20px] bg-[#0C60A1] flex items-center justify-center rounded-full'
+                )
+            }
             ref={selectOptions ? iconRef : undefined}
             onClick={onIconClick && onIconClick}
         >

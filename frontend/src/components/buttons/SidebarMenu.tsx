@@ -1,3 +1,4 @@
+import { classMerge } from '@utils/css.util';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -75,10 +76,14 @@ export default function SidebarMenu({
         <ul className="flex flex-col gap-[4px]">
             {tabOptions.map((tab) => (
                 <li
-                    className={`
-                        bg-[#F6F4FB] cursor-pointer hover:bg-[#c7c9df] overflow-hidden px-[20px] py-[12px] relative rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]
-                        ${activeTab === tab.label ? '!bg-[#D4D9EA]' : ''}
-                    `}
+                    className={
+                        classMerge(
+                            'bg-[#F6F4FB] cursor-pointer hover:bg-[#c7c9df] overflow-hidden px-[20px] py-[12px] relative rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
+                            activeTab === tab.label
+                                ? '!bg-[#D4D9EA]'
+                                : ''
+                        )
+                    }
                     key={tab.label}
                     onClick={() => handleSelectedTab(tab)}
                 >

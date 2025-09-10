@@ -16,7 +16,7 @@ export default function CommonTextArea({
     ...props
 } : CommonTextAreaProps) {
 
-    return(
+    return (
         <ShadowCard white>
             <div
                 className="flex flex-col gap-[8px] h-full p-[8px] text-[#080612] w-full"
