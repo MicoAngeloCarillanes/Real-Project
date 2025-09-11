@@ -1,19 +1,19 @@
-import notifBellIcon from '@assets/icons/notification-bell-icon.svg';
-import settingsIcon from '@assets/icons/settings-icon.svg';
 import gridMenuIcon from '@assets/icons/grid-menu-icon.svg';
 import listMenuIcon from '@assets/icons/list-menu-icon.svg';
-import CourseList from '@pages/user/student/course/CourseList';
+import notifBellIcon from '@assets/icons/notification-bell-icon.svg';
+import settingsIcon from '@assets/icons/settings-icon.svg';
 import ShadowCard from '@components/card/ShadowCard';
 import CommonHeader from '@components/container/CommonHeader';
 import MainDiv from '@components/container/MainDiv';
+import CourseList from '@pages/user/student/course/CourseList';
+import { usePath } from '@utils/path.util';
 import { useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export default function StudentCourse() {
-    const location = useLocation();
-    const coursePath = '/student/course/';
-    const isCourseRoot = location.pathname === coursePath;
-    const isCoursePath = location.pathname.startsWith(coursePath);
+    // Hooks
+    const { isPath, isRoot } = usePath();
+
     const [isGrid, setIsGrid] = useState(false);
     const iconMap = [
         {
@@ -37,7 +37,7 @@ export default function StudentCourse() {
 
     return (
         <>
-            {(!isCourseRoot && isCoursePath) ? (
+            {(!isRoot && isPath) ? (
                 <Outlet />
             ) : (
                 <MainDiv>

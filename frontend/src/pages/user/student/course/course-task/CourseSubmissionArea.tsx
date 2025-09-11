@@ -44,6 +44,7 @@ export default function CourseSubmissionArea({
                                         <CommonButton
                                             buttonLabel={button.buttonLabel}
                                             buttonStyle={button.buttonStyle}
+                                            isShadowed
                                         />
                                     </React.Fragment>
                                 ))}

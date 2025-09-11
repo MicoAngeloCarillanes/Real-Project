@@ -9,7 +9,7 @@ export interface DetailCardProps {
     // Task name of a timeline item
     cardName?: string;
     // Current cardStatus of a timeline item
-    cardStatus?: 'pending' | 'missed' | 'submitted' | 'completed';
+    cardStatus?: CardStatusProps;
     // Due date of a timeline item
     dueDate?: string;
     // Checks whether the detail is bordered
@@ -35,15 +35,41 @@ export default function DetailCard({
     isTask,
     isTransparent
 }: DetailCardProps) {
-    // State variables
     const [isHovered, setIsHovered] = useState(false);
-    // Style variables
-    const closedTaskStyle = 'bg-[#F6F4FB] opacity-[0.55]';
-    // Custom variables
+
+    // Status → color maps
+    const statusColors: Record<CardStatusProps, string> = {
+        missed: 'bg-[#ffc5c8]',
+        submitted: 'bg-[#B6E7FE]',
+        pending: 'bg-[#F6F4FB]',
+        completed: 'bg-[#D4D9EA]'
+    };
+    const statusTextColors: Record<CardStatusProps, string> = {
+        missed: 'text-[#BF0A12]',
+        completed: 'text-[#0ABF10]',
+        submitted: 'text-[#353A40]',
+        pending: 'text-[#353A40]'
+    };
+
     const capitalizedStatus = cardStatus
         ? cardStatus.charAt(0)
-            .toLocaleUpperCase() + cardStatus.slice(1)
+            .toUpperCase() + cardStatus.slice(1)
         : '';
+
+    /**
+     * Handle get card background
+     */
+    function handleGetCardBackground() {
+        if (isTransparent) return 'bg-transparent';
+        if (isTask) {
+            if (cardStatus === 'missed') return 'bg-[#F6F4FB] opacity-[0.55]';
+            if (cardStatus === 'submitted') return 'bg-white';
+            if (cardStatus === 'pending') return statusColors.pending;
+            return 'bg-[#F6F4FB] opacity-[0.55]';
+        }
+        if (isFile || isCourse) return '';
+        return cardStatus ? statusColors[cardStatus] : statusColors.completed;
+    }
 
     /**
      * Handle set hover state to true when mouse enters the element area
@@ -61,36 +87,13 @@ export default function DetailCard({
 
     return (
         <div
-            className={
-                classMerge(
-                    'flex flex-col gap-y-[4px]',
-                    isTransparent
-                        ? 'bg-transparent'
-                        : 'cursor-pointer px-[6px] py-[4px] rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] w-full',
-                    isTask
-                        ? ''
-                        : 'hover:opacity-[0.8]',
-                    isTask || isFile
-                        ? ''
-                        : cardStatus === 'missed'
-                            ? 'bg-[#ffc5c8]'
-                            : cardStatus === 'submitted'
-                                ? 'bg-[#B6E7FE]'
-                                :  'bg-[#D4D9EA]',
-                    !isTask
-                        ? ''
-                        : cardStatus === 'missed'
-                            ? `${closedTaskStyle}`
-                            : cardStatus === 'submitted'
-                                ? 'bg-[#FFFFFF]'
-                                :  cardStatus === 'pending'
-                                    ? 'bg-[#F6F4FB]'
-                                    : `${closedTaskStyle}`,
-                    isBordered
-                        ? 'border-[1px] border-[#353A40]'
-                        : ''
-                )
-            }
+            className={classMerge(
+                'flex flex-col gap-y-[4px]',
+                !isTransparent && 'cursor-pointer px-[6px] py-[4px] rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] w-full',
+                !isTask && 'hover:opacity-[0.8]',
+                isBordered && 'border border-[#353A40]',
+                handleGetCardBackground()
+            )}
             onMouseEnter={handleHoverEnter}
             onMouseLeave={handleHoverLeave}
         >
@@ -114,7 +117,7 @@ export default function DetailCard({
                             className={
                                 classMerge(
                                     'leading-[100%] font-[300]',
-                                    cardStatus === 'missed' ? 'text-[#BF0A12]' : cardStatus === 'completed' ? 'text-[#0ABF10]' :  'text-[#353A40]'
+                                    cardStatus && statusTextColors[cardStatus]
                                 )
                             }
                         >
