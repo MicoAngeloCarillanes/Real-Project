@@ -1,16 +1,22 @@
 import StudentCourse from '@pages/user/student/course';
-import type { RouteObject } from 'react-router-dom';
-import CourseOverviewRoute from '@router/user/student/course/course-overview.route';
-import CourseTaskRoute from '@router/user/student/course/course-task.route';
+import CourseTask from '@pages/user/student/course/course-task';
+import CourseOverview from '@pages/user/student/course/CourseOverview';
+import { RouteObject } from 'react-router-dom';
 
-export default function StudentCourseRoute(): RouteObject[] {
+export default function studentCourseRoute(): RouteObject[] {
     return [
         {
             path: 'course/',
             element: <StudentCourse />,
             children: [
-                ...CourseOverviewRoute(),
-                ...CourseTaskRoute()
+                {
+                    element: <CourseOverview />,
+                    path: ':courseId/overview'
+                },
+                {
+                    element: <CourseTask />,
+                    path: ':courseId/:taskId/task'
+                }
             ]
         }
     ];

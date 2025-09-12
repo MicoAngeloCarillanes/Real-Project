@@ -1,7 +1,7 @@
 import StudentChat from '@pages/user/student/chat';
-import type { RouteObject } from 'react-router-dom';
+import { RouteObject } from 'react-router-dom';
 
-export default function StudentChatRoute(): RouteObject[] {
+export default function studentChatRoute(): RouteObject[] {
     return [
         {
             path: 'chats',

@@ -9,13 +9,16 @@ export interface CommonButtonProps {
     isShadowed?: boolean;
     // Button size
     size?: 'sm' | 'm' | 'default';
+    // Callback trigger when button is clicked
+    onButtonClick?: VoidFunction;
 }
 
 export default function CommonButton({
     buttonLabel,
     buttonStyle,
     isShadowed,
-    size = 'default'
+    size = 'default',
+    onButtonClick
 }: CommonButtonProps) {
     const buttonSizeMap = {
         sm: {
@@ -47,6 +50,7 @@ export default function CommonButton({
                 )
             }
             style={buttonSize}
+            onClick={onButtonClick && onButtonClick}
         >
             {buttonLabel}
         </button>

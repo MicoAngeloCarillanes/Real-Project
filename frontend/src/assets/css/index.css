@@ -36,4 +36,21 @@ ul, li {
   list-style: none;
 }
 
+/* src/styles/ag-custom.css */
+.ag-theme-quartz {
+  --ag-header-background-color: #0C60A1;
+  --ag-header-foreground-color: #fff;
+  --ag-header-font-weight: 700;
+  --ag-header-font-size: 14px;
+  --ag-row-hover-color: transparent;
+}
 
+
+.ag-grade-header {
+  @apply font-[700] text-[14px] text-[#FFFFFF] bg-[#0C60A1] hover:bg-[#0C60A1];
+}
+
+.ag-grade-header:hover {
+  background-color: #0C60A1 !important;
+  color: #ffffff !important;
+}

@@ -1,4 +1,5 @@
 import { classMerge } from '@utils/css.util';
+import { usePath } from '@utils/path.util';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ export default function SidebarMenu({
 }: SidebarMenuProps) {
     // Hooks
     const navigate = useNavigate();
+    const { pathname, secondaryPath } = usePath();
     // State variables
     const [activeTab, setActiveTab] = useState('');
     // Custom variables
@@ -56,8 +58,8 @@ export default function SidebarMenu({
     const tabOptions = userLevel ? tabMap[userLevel] : [];
 
     useEffect(() => {
-        setActiveTab(tabOptions[0].label);
-    }, []);
+        setActiveTab(secondaryPath);
+    }, [pathname]);
 
     /**
      * Changes the active tab and navigates user to designated screen.
@@ -66,31 +68,31 @@ export default function SidebarMenu({
      */
     function handleSelectedTab(tab: TabProps) {
         if (tab) {
-            const tabLabel = tab.label;
-            setActiveTab(tabLabel);
-            navigate(`${tabLabel.toLowerCase()}`);
+            const tabPath = tab.path;
+            setActiveTab(tabPath);
+            navigate(`/student/${tabPath}`);
         }
     }
 
     return (
         <ul className="flex flex-col gap-[4px]">
-            {tabOptions.map((tab) => (
+            {tabOptions.map((tab, tabKey) => (
                 <li
                     className={
                         classMerge(
                             'bg-[#F6F4FB] cursor-pointer hover:bg-[#c7c9df] overflow-hidden px-[20px] py-[12px] relative rounded-[8px] shadow-[0_4px_4px_rgba(0,0,0,0.25)]',
-                            activeTab === tab.label
+                            activeTab === tab.path
                                 ? '!bg-[#D4D9EA]'
                                 : ''
                         )
                     }
-                    key={tab.label}
+                    key={`${tab.label}-${tabKey}`}
                     onClick={() => handleSelectedTab(tab)}
                 >
                     <span className="font-[700] text-[#052554] text-[16px]">
                         {tab.label}
                     </span>
-                    {activeTab === tab.label && (
+                    {activeTab === tab.path && (
                         <div className="[clip-path:ellipse(60%_80%_at_70%_100%)] absolute bg-[#c7c9df] bottom-[-10px] h-[100px] origin-bottom-right right-[-5px] rounded-[99999px] scale-[0.5] w-[120px]"></div>
                     )}
                 </li>

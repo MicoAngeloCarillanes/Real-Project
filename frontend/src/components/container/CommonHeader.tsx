@@ -6,7 +6,7 @@ interface CommonHeaderProps {
     // Header icons
     icons?: Omit<IconSelectProps, 'selectOptions' | 'isHeader'>[];
     // Checks whether the header is of course
-    isCourseHeader?: boolean;
+    isBlueHeader?: boolean;
     // Header sub title
     subTitle?: string;
     // Header title
@@ -15,7 +15,7 @@ interface CommonHeaderProps {
 
 export default function CommonHeader({
     icons,
-    isCourseHeader,
+    isBlueHeader,
     subTitle,
     title
 }: CommonHeaderProps) {
@@ -23,11 +23,17 @@ export default function CommonHeader({
         <div>
             <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[4px]">
+                    <div className="flex flex-col gap-[8px] leading-[100%]">
+                        <h1 className="font-[800] text-[#0C60A1] text-[20px]">
+                        Julius Robert T. Tolentino
+                        </h1>
+                        <h2 className="font-[500] text-[#080612] text-[14px]">Faculty Evaluation</h2>
+                    </div>
                     <h1
                         className={
                             classMerge(
                                 'font-[700] leading-[100%] text-[20px]',
-                                isCourseHeader
+                                isBlueHeader
                                     ? 'text-[#080612]'
                                     : 'text-[#0C60A1]'
                             )
@@ -38,28 +44,29 @@ export default function CommonHeader({
                     <h2
                         className={
                             classMerge(
-                                'leading-[100%] text-[12px] #080612',
-                                isCourseHeader ? 'font-[300]' : 'font-[400]'
+                                'leading-[100%] text-[12px] text-[#080612]'
                             )
                         }
                     >
                         {subTitle}
                     </h2>
                 </div>
-                <div className="flex gap-[8px]">
-                    {icons?.map((icon, key) => (
-                        <React.Fragment key={key}>
-                            <IconSelect
-                                height={icon.height || 11}
-                                imageUrl={icon.imageUrl}
-                                isHeader
-                                pendingActCount={icon.pendingActCount}
-                                width={icon.width || 11}
-                                onIconClick={icon.onIconClick ? icon.onIconClick : undefined}
-                            />
-                        </React.Fragment>
-                    ))}
-                </div>
+                {icons && (
+                    <div className="flex gap-[8px]">
+                        {icons?.map((icon, key) => (
+                            <React.Fragment key={key}>
+                                <IconSelect
+                                    height={icon.height || 11}
+                                    imageUrl={icon.imageUrl}
+                                    isHeader
+                                    pendingActCount={icon.pendingActCount}
+                                    width={icon.width || 11}
+                                    onIconClick={icon.onIconClick ? icon.onIconClick : undefined}
+                                />
+                            </React.Fragment>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );

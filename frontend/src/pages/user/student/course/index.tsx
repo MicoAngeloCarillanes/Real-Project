@@ -7,14 +7,15 @@ import CommonHeader from '@components/container/CommonHeader';
 import MainDiv from '@components/container/MainDiv';
 import CourseList from '@pages/user/student/course/CourseList';
 import { usePath } from '@utils/path.util';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 export default function StudentCourse() {
     // Hooks
-    const { isPath, isRoot } = usePath();
-
+    const { renderOutlet, setBasePath, pathname } = usePath();
+    // State variables
     const [isGrid, setIsGrid] = useState(false);
+    // Icon list
     const iconMap = [
         {
             imageUrl: notifBellIcon,
@@ -31,26 +32,26 @@ export default function StudentCourse() {
         }
     ];
 
+    useEffect(() => {
+        setBasePath(pathname);
+    }, []);
+
     function handleToggleDisplay() {
         setIsGrid(!isGrid);
     }
 
-    return (
-        <>
-            {(!isRoot && isPath) ? (
-                <Outlet />
-            ) : (
-                <MainDiv>
-                    <CommonHeader
-                        title="Courses"
-                        subTitle="Course List"
-                        icons={iconMap}
-                    />
-                    <ShadowCard isLarge>
-                        <CourseList isGrid={isGrid} />
-                    </ShadowCard>
-                </MainDiv>
-            )}
-        </>
-    );
+    return renderOutlet
+        ? <Outlet />
+        : (
+            <MainDiv>
+                <CommonHeader
+                    title="Courses"
+                    subTitle="Course List"
+                    icons={iconMap}
+                />
+                <ShadowCard isLarge>
+                    <CourseList isGrid={isGrid} />
+                </ShadowCard>
+            </MainDiv>
+        );
 };

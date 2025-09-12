@@ -1,9 +1,13 @@
 import CommonButton from '@components/buttons/CommonButton';
 import ShadowCard from '@components/card/ShadowCard';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProfileCardHeader from './ProfileCardHeader';
 
 export default function AssignedCourse() {
+    // Hooks
+    const navigate = useNavigate();
+    // Custom variables
     const InfoRow = ({ label, value }: { label: string; value: string }) => (
         <div>
             <span className="font-semibold">{label}: </span>
@@ -43,6 +47,14 @@ export default function AssignedCourse() {
         }
     ];
 
+    function handleViewOverallGrade() {
+        navigate('grade-report');
+    }
+
+    function handleViewGrade(courseCode: string) {
+        navigate(`grade-report/:${courseCode}`);
+    }
+
     return (
         <ShadowCard>
             <div className="flex flex-col gap-[16px] p-[16px] w-full">
@@ -51,6 +63,7 @@ export default function AssignedCourse() {
                     buttonStyle="blue"
                     cardLabel="Course Enrolled (Current Semester)"
                     size="m"
+                    onButtonClick={handleViewOverallGrade}
                 />
                 <div className="gap-[12px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-full">
                     {courses.map((course, courseKey) => (
@@ -64,6 +77,7 @@ export default function AssignedCourse() {
                                                 buttonLabel="View Grade"
                                                 buttonStyle="blue"
                                                 size="sm"
+                                                onButtonClick={() => handleViewGrade(course.code)}
                                             />
                                         </div>
                                         <div className="flex flex-col gap-[8px] leading-[100%] text-[#080612]">

@@ -26,12 +26,8 @@ export default function ShadowCard({
                     white
                         ? 'bg-[#FFFFFF]'
                         : 'bg-[#F6F4FB]',
-                    isLarge
-                        ? 'min-h-[calc(100vh-120px)]'
-                        : '',
-                    isCentered
-                        ? 'justify-center'
-                        : ''
+                    isLarge && 'min-h-[calc(100vh-120px)]',
+                    isCentered && 'justify-center'
                 )
             }
         >

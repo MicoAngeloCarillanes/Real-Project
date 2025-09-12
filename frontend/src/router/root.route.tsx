@@ -1,14 +1,14 @@
 import Root from '@pages/Root';
+import studentRoute from '@router/user/student/student-root.route';
 import { RouteObject } from 'react-router-dom';
-import StudentRoute from '@router/user/student/student-root.route';
 
-export default function RouteRoot(): RouteObject[] {
+export default function routeRoot(): RouteObject[] {
     return [
         {
             path: '/',
             element: <Root />,
             children: [
-                ...StudentRoute()
+                ...studentRoute()
             ]
         }
     ];

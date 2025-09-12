@@ -1,7 +1,7 @@
 import StudentDashboard from '@pages/user/student/dashboard';
-import type { RouteObject } from 'react-router-dom';
+import { RouteObject } from 'react-router-dom';
 
-export default function StudentDashboardRoute(): RouteObject[] {
+export default function studentDashboardRoute(): RouteObject[] {
     return [
         {
             path: 'dashboard',

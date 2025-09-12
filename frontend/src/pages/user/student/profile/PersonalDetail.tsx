@@ -15,6 +15,13 @@ export default function PersonalDetail() {
         'Role': 'Student',
         'Enrolled': 'A.Y. 2024 - 2025'
     };
+    const maxLength = Object.keys(studentDetails)
+        .reduce((max, key) => {
+            return key.length > max
+                ? key.length
+                : max;
+        }, 0);
+    const labelWidth = `${maxLength + 2}ch`;
 
     return (
         <ShadowCard>
@@ -31,6 +38,7 @@ export default function PersonalDetail() {
                             <CommonHighlightedLabel
                                 key={`details-${key}`}
                                 label={key}
+                                labelWidth={labelWidth}
                                 value={value}
                             />
                         ))}
